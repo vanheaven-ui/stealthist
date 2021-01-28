@@ -7,7 +7,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('logo', 'assets/images/logo1.png');
+    this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2, 'logo')
     this.load.image('background', 'assets/images/title_bg.jpg');
 
     this.loadingBar = this.add.graphics();
