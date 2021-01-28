@@ -4,6 +4,10 @@ export const CST = {
     PRELOAD: 'PRELOAD',
     TITLE: 'TITLE',
     GAME: 'GAME',
+    GUIDE1: 'Scene1Guide',
+    GUIDE2: 'Scene2Guide',
+    OPTIONS: 'OPTIONS',
+    CREDITS: 'CREDITS',
   },
   dimens: (scene) => {
     return {
