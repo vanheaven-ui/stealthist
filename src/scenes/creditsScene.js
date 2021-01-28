@@ -39,5 +39,8 @@ export default class CreditsScene extends Phaser.Scene {
       },
     );
     this.poweredBy.setOrigin(0.5, 0.5);
+    this.input.on('pointerdown', () => {
+      this.scene.start(CST.scenes.GUIDE1);
+    });    
   }
 }
