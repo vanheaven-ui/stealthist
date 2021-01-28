@@ -11,5 +11,9 @@ export default class TitleScene extends Phaser.Scene {
     this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2 * 1.30, 'options')
     this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2, 'play').setDepth(2);
+
+    this.input.on('pointerdown', () => {
+      this.scene.start(CST.scenes.CREDITS);
+    });
   }
 }
