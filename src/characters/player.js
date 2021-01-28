@@ -1,5 +1,3 @@
-import ProtoChar from './protoChar';
-
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(data) {
     let { scene, x, y, texture, frame } = data

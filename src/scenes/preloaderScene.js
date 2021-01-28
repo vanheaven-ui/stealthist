@@ -20,9 +20,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.loadingBox.fillStyle(0x222222, 0.8);
     this.loadingBox.fillRect(240, 270, 320, 50);
 
-    let x = this.cameras.main.width;
-    let y = this.cameras.main.height;
-
     let loadingText = this.make.text({
       text: 'Loading...',
       x: CST.cameraDimens(this).width / 2,
