@@ -7,13 +7,14 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    for (let i = 0; i < 200; i += 1) {
-      this.load.image('logo', 'assets/images/logo1.png');
+    this.load.image('logo', 'assets/images/logo1.png');
+    for (let i = 0; i < 50; i += 1) {
+      this.load.image('logo' + i, 'assets/images/logo1.png');
     }
     console.log('I dont think this scene is important in my game concept');
   }
 
-  create() {    
+  create() {
     this.scene.start(CST.scenes.PRELOAD);
   }
 }
