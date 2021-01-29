@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import PhaserMatterCollisionPlugin from "phaser-matter-collision-plugin/src";
 import BootScene from '../scenes/bootScene';
 import CreditsScene from '../scenes/creditsScene';
 import GameScene from '../scenes/gameScene';
@@ -28,4 +29,13 @@ export const config = {
   dom: {
     createContainer: true,
   },
+  plugins: {
+    scene: [
+      {
+        plugin: PhaserMatterCollisionPlugin, // The plugin class
+        key: "matterCollision", // Where to store in Scene.Systems, e.g. scene.sys.matterCollision
+        mapping: "matterCollision" // Where to store in the Scene, e.g. scene.matterCollision
+      }
+    ]
+  }
 }
