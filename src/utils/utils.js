@@ -30,6 +30,22 @@ export const CST = {
     },
     style3: {
 
+    },
+    guideTitleStyle: {
+      'color': '#00ff00',
+      'text-decoration': 'underline',
+      'text-align': 'center',
+
+    },
+    guideTextStyle: {
+      'color': '#ffffff',
+      'line-spacing': '3px',
+      'text-align': 'center',
+      'font': '15px monospace',
+      'border': '2px solid #fff',
+      'border-radius': '10px',
+      'padding': '10px',
+      'text-align': 'justify',
     }
   }
 }

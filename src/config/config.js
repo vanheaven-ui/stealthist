@@ -18,6 +18,7 @@ export const config = {
     GuideOne,
     GameScene,
   ],
+  parent: 'steathist-wrap',
   pixelArt: true,
   physics: 'arcade',
   arcade: {
@@ -25,6 +26,6 @@ export const config = {
     gravity: { y: 0 },
   },
   dom: {
-    createContainer: true
-},
+    createContainer: true,
+  },
 }
