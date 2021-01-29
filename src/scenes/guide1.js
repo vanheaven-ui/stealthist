@@ -8,7 +8,7 @@ export default class GuideOne extends Phaser.Scene {
 
   create() {
     this.titleText = 'FORAGE SCENE INSTRUCTIONS';
-    this.guideText = `You were camping with your girlfriend, and a local gang attacked you, 
+    this.guideText = `You were camping with your girlfriend in a public park, and a local gang attacked you, 
                       kidnapped your girlfriend, and left you in bad health as you tried to ward them off. 
                       Now you have to forage through the bushes and replenish your energy. 
                       Once you have good health, you have to make it through obstacles in the evade scene 
@@ -63,7 +63,7 @@ export default class GuideOne extends Phaser.Scene {
       ease: 'Sine.easeInOut',
       loop: -1,
       yoyo: true
-  });
+    });
 
     this.input.on('pointerdown', () => {
       this.scene.start(CST.scenes.GAME);

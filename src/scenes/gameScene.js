@@ -8,20 +8,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    
-    // this.player = new Player({
-    //   scene: this,
-    //   x: 20,
-    //   y: 20,
-    //   texture: 'dude1',
-    //   frame: 'down',
-    // });
-
-    this.player = this.physics.add.sprite(20, 20, 'dude1', 'down').setDepth(1);
-
-    // this.add.existing(this.player).setDepth(1);
-
-    // console.log(this.player);
+    this.player = new Player(this, 20, 20, 'dude1', 'down').setDepth(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -31,7 +18,8 @@ export default class GameScene extends Phaser.Scene {
     const layer2 = map.createLayer('Tile Layer 2', tileset, 0, 0);
 
     layer1.setCollisionByProperty({ collides: true });
-    // this.matter.world.convertTilemapLayer(layer1);
+    // this.arcade.world.convertTilemapLayer(layer1);
+    this.physics.arcade.world.convertTilemapLayer(layer1);
   }
 
   update() {

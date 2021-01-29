@@ -38,7 +38,31 @@ export default class CreditsScene extends Phaser.Scene {
         fill: '#ffffff',
       },
     );
-    this.poweredBy.setOrigin(0.5, 0.5);
+
+    this.tweens.add({
+      targets: this.creditTitle,
+      y: -300,
+      duration: 2000,
+      ease: 'linear',
+      repeat: -1,
+    });
+
+    this.tweens.add({
+      targets: this.createdBy,
+      y: -300,
+      duration: 2000,
+      ease: 'linear',
+      repeat: -1,
+    });
+
+    this.tweens.add({
+      targets: this.poweredBy,
+      y: -300,
+      duration: 2000,
+      ease: 'linear',
+      repeat: -1,
+    });
+
     this.input.on('pointerdown', () => {
       this.scene.start(CST.scenes.GUIDE1);
     });    
