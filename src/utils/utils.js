@@ -1,4 +1,4 @@
-export const CST = {
+const CST = {
   scenes: {
     BOOT: 'BOOT',
     PRELOAD: 'PRELOAD',
@@ -49,3 +49,5 @@ export const CST = {
     }
   }
 }
+
+export default CST;

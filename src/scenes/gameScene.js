@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../characters/player';
-import { CST } from '../utils/utils';
+import CST from '../utils/utils';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {

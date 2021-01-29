@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { CST } from '../utils/utils';
+import CST from '../utils/utils';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -9,7 +9,7 @@ export default class PreloaderScene extends Phaser.Scene {
   preload() {
     this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2, 'logo');
     this.load.image('background', 'assets/images/title_bg.jpg');
-    
+
     this.load.spritesheet('dude', 'assets/images/male.png', { frameWidth: 32, frameHeight: 32 });
 
     this.load.image('tiles', 'assets/images/RPG Nature Tileset.png');

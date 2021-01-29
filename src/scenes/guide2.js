@@ -1,4 +1,4 @@
-import { CST } from '../utils/utils';
+import CST from '../utils/utils';
 
 export default class GuideTwo extends Phaser.Scene {
   constructor() {

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { CST } from '../utils/utils';
+import CST from '../utils/utils';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
