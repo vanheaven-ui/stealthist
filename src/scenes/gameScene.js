@@ -10,7 +10,7 @@ export default class GameScene extends Phaser.Scene {
   create() {
     this.player = new Player(this, 20, 20, 'dude1', 'down').setDepth(1);
 
-    this.cursors = this.input.keyboard.createCursorKeys();
+    this.player.cursors = this.input.keyboard.createCursorKeys();
 
     const map = this.make.tilemap({ key: 'map' });
     const tileset = map.addTilesetImage('RPG Nature Tileset', 'tiles', 32, 32, 0, 0);
@@ -18,25 +18,20 @@ export default class GameScene extends Phaser.Scene {
     const layer2 = map.createLayer('Tile Layer 2', tileset, 0, 0);
 
     layer1.setCollisionByProperty({ collides: true });
-    // this.arcade.world.convertTilemapLayer(layer1);
-    this.physics.arcade.world.convertTilemapLayer(layer1);
+    // this.physics.arcade.convertTilemapLayer(layer1);
+
+    this.physics.world.bounds.width = map.widthInPixels;
+    this.physics.world.bounds.height = map.heightInPixels;
+
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.startFollow(this.player);
+    this.cameras.main.roundPixels = true;
   }
 
   update() {
-    this.player.setVelocity(0);
-    // this.player.movePlayer();
-    if (this.cursors.left.isDown) {
-      this.player.setVelocityX(-160);
-    }
-    else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(160);
-    }
-
-    else if (this.cursors.up.isDown) {
-      this.player.setVelocityY(-160);
-    }
-    else if (this.cursors.down.isDown) {
-      this.player.setVelocityY(160);
-    }
+    this.player.movePlayer();
+    this.input.on('pointerdown', () => {
+      this.scene.start(CST.scenes.GUIDE2);
+    });
   }
 }
