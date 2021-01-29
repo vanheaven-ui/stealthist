@@ -35,13 +35,20 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
+    this.player.setVelocity(0);
     // this.player.movePlayer();
     if (this.cursors.left.isDown) {
-      console.log('Left movt');
-      this.player.setVelocityX(-3);
+      this.player.setVelocityX(-160);
     }
     else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(3);
+      this.player.setVelocityX(160);
+    }
+
+    else if (this.cursors.up.isDown) {
+      this.player.setVelocityY(-160);
+    }
+    else if (this.cursors.down.isDown) {
+      this.player.setVelocityY(160);
     }
   }
 }
