@@ -1,10 +1,16 @@
 import Phaser from 'phaser';
 
-export default class Player extends Phaser.GameObjects.Sprite {
+export default class Player extends Phaser.Physics.Matter.Sprite {
   constructor(data) {
     let { scene, x, y, texture, frame } = data
-    super(scene, x, y, texture, frame);
+    super({
+      scene: scene,
+    });
     this.scene.add.existing(this);
+    this.x = x;
+    this.y = y;
+    this.texture = texture;
+    this.frame = frame;
 
     this.setScale(1.5);
   }

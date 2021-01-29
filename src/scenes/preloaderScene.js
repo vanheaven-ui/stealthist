@@ -58,14 +58,12 @@ export default class PreloaderScene extends Phaser.Scene {
     assetText.setOrigin(0.5, 0.5);
 
     this.load.on('progress', percent => {
-      console.log(percent);
       this.loadingBar.fillStyle(0xffffff, 1);
       this.loadingBar.fillRect(250, 280, 300 * percent, 30);
       percentText.setText(parseInt(percent * 100, 10) + '%');
     });
 
     this.load.on('fileprogress', file => {
-      console.group(file.src);
       assetText.setText('Loading Asset: ' + file.key);
     });
 

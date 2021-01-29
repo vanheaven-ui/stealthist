@@ -7,10 +7,11 @@ import GuideOne from '../scenes/guide1';
 import PreloaderScene from '../scenes/preloaderScene';
 import TitleScene from '../scenes/titleScene';
 
-export const config = {
+const config = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
+  parent: 'steathist-wrap',
   scene: [
     BootScene,
     PreloaderScene,
@@ -19,23 +20,26 @@ export const config = {
     GuideOne,
     GameScene,
   ],
-  parent: 'steathist-wrap',
-  pixelArt: true,
-  physics: 'matter',
-  matter: {
-    debug: true,
-    gravity: { y: 0 },
+  physics: {
+    default: 'matter',
+    matter: {
+      debug: true,
+      gravity: { y: 0 }, 
+    }
   },
+  pixelArt: true,
   dom: {
     createContainer: true,
   },
   plugins: {
     scene: [
       {
-        plugin: PhaserMatterCollisionPlugin, // The plugin class
-        key: "matterCollision", // Where to store in Scene.Systems, e.g. scene.sys.matterCollision
-        mapping: "matterCollision" // Where to store in the Scene, e.g. scene.matterCollision
-      }
+        plugin: PhaserMatterCollisionPlugin,
+        key: 'matterCollision',
+        mapping: 'matterCollision',
+      },
     ]
-  }
+  },
 }
+
+export default config;
