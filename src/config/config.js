@@ -3,6 +3,7 @@ import BootScene from '../scenes/bootScene';
 import CreditsScene from '../scenes/creditsScene';
 import GameScene from '../scenes/gameScene';
 import GuideOne from '../scenes/guide1';
+import GuideTwo from '../scenes/guide2';
 import PreloaderScene from '../scenes/preloaderScene';
 import TitleScene from '../scenes/titleScene';
 
@@ -18,6 +19,7 @@ const config = {
     CreditsScene,
     GuideOne,
     GameScene,
+    GuideTwo
   ],
   physics: {
     default: 'arcade',
