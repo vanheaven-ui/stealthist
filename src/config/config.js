@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import PhaserMatterCollisionPlugin from "phaser-matter-collision-plugin/src";
 import BootScene from '../scenes/bootScene';
 import CreditsScene from '../scenes/creditsScene';
 import GameScene from '../scenes/gameScene';
@@ -21,8 +20,8 @@ const config = {
     GameScene,
   ],
   physics: {
-    default: 'matter',
-    matter: {
+    default: 'arcade',
+    arcade: {
       debug: true,
       gravity: { y: 0 }, 
     }
@@ -30,15 +29,6 @@ const config = {
   pixelArt: true,
   dom: {
     createContainer: true,
-  },
-  plugins: {
-    scene: [
-      {
-        plugin: PhaserMatterCollisionPlugin,
-        key: 'matterCollision',
-        mapping: 'matterCollision',
-      },
-    ]
   },
 }
 

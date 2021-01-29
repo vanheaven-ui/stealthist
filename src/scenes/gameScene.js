@@ -17,9 +17,9 @@ export default class GameScene extends Phaser.Scene {
     //   frame: 'down',
     // });
 
-    this.player = new Phaser.Physics.Matter.Sprite(this.matter.world, 20, 20, 'dude1', 'down');
+    this.player = this.physics.add.sprite(20, 20, 'dude1', 'down').setDepth(1);
 
-    this.add.existing(this.player).setDepth(1);
+    // this.add.existing(this.player).setDepth(1);
 
     // console.log(this.player);
 
