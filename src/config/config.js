@@ -21,8 +21,8 @@ export const config = {
   ],
   parent: 'steathist-wrap',
   pixelArt: true,
-  physics: 'arcade',
-  arcade: {
+  physics: 'matter',
+  matter: {
     debug: true,
     gravity: { y: 0 },
   },
