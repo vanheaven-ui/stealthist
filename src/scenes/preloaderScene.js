@@ -19,6 +19,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('options', 'assets/images/options_button.png');
     this.load.atlas('dude1', 'assets/images/dude1.png', 'assets/images/dude1_atlas.json');
 
+    this.load.image('food', 'assets/images/crops.png');
+
     this.loadingBar = this.add.graphics();
     this.loadingBox = this.add.graphics();
     this.loadingBox.fillStyle(0x222222, 0.8);
