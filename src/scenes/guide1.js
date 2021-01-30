@@ -65,8 +65,27 @@ export default class GuideOne extends Phaser.Scene {
       yoyo: true
     });
 
-    this.input.on('pointerdown', () => {
+    this.proceedBtn = this.add.image(
+      CST.dimens(this).width / 2 + 200,
+      CST.dimens(this).height * 0.9,
+      'proceed'
+    );
+
+    this.menuBtn = this.add.image(
+      CST.dimens(this).width / 2 - 200,
+      CST.dimens(this).height * 0.9,
+      'menu'
+    );
+
+    this.proceedBtn.setInteractive();
+    this.menuBtn.setInteractive();
+    
+    this.proceedBtn.on('pointerdown', () => {
       this.scene.start(CST.scenes.GAME);
+    });
+
+    this.menuBtn.on('pointerdown', () => {
+      this.scene.start(CST.scenes.TITLE);
     });
   }
 

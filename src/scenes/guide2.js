@@ -63,5 +63,29 @@ export default class GuideTwo extends Phaser.Scene {
       loop: -1,
       yoyo: true
     });
+
+    this.proceedBtn = this.add.image(
+      CST.dimens(this).width / 2 + 200,
+      CST.dimens(this).height * 0.9,
+      'playScene',
+    );
+    this.menuBtn = this.add.image(
+      CST.dimens(this).width / 2 - 200,
+      CST.dimens(this).height * 0.9,
+      'menu',
+    );
+
+    this.proceedBtn.setInteractive();
+    this.menuBtn.setInteractive();
+    
+    this.proceedBtn.on('pointerdown', () => {
+      this.scene.start(CST.scenes.GAME1);
+    });
+    
+    this.menuBtn.on('pointerdown', () => {
+      this.scene.start(CST.scenes.TITLE);
+    });
+
+
   }
 }
