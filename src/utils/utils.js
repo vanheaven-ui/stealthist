@@ -8,6 +8,8 @@ const CST = {
     GUIDE2: 'Scene2Guide',
     OPTIONS: 'OPTIONS',
     CREDITS: 'CREDITS',
+    GAME1: 'STEALTH',
+    GAMEOVER: 'GAMEOVER',
   },
   dimens: (scene) => {
     return {
