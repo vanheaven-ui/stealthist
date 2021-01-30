@@ -25,6 +25,17 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('apple', 'assets/images/apple.png');
     this.load.image('banana','assets/images/banana.png');
 
+    this.load.image('proceed', 'assets/images/continue.png');
+    this.load.image('menu', 'assets/images/menu.png');
+    this.load.image('playScene', 'assets/images/play.png');
+
+    this.load.image('enable-music', 'assets/images/enableMusic.png');
+    this.load.image('disable-music', 'assets/images/disable.png');
+    this.load.image('enabled', 'assets/images/musicEnabled.png');
+    this.load.image('disabled', 'assets/images/musicDisabled.png');
+
+    this.load.audio('gameSound', 'assets/audio/game.mp3');
+
     this.loadingBar = this.add.graphics();
     this.loadingBox = this.add.graphics();
     this.loadingBox.fillStyle(0x222222, 0.8);
