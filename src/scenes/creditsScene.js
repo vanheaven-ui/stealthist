@@ -9,7 +9,7 @@ export default class CreditsScene extends Phaser.Scene {
   create() {
     this.creditTitle = this.add.text(
       CST.dimens(this).width / 2,
-      CST.dimens(this).height / 2 * 0.3,
+      CST.dimens(this).height / 2,
       'CREDITS',
       { 
         font: '32px monoscope',
@@ -20,7 +20,7 @@ export default class CreditsScene extends Phaser.Scene {
 
     this.createdBy = this.add.text(
       CST.dimens(this).width / 2,
-      CST.dimens(this).height / 2,
+      CST.dimens(this).height,
       'Created By: Ezekiel Mworekwa',
       { 
         font: '24px garamond',
@@ -31,18 +31,20 @@ export default class CreditsScene extends Phaser.Scene {
 
     this.poweredBy = this.add.text(
       CST.dimens(this).width / 2,
-      CST.dimens(this).height / 2 * 1.70,
+      CST.dimens(this).height * 1.50,
       'Powered By: Phaser 3',
       { 
         fontSize: '18px',
         fill: '#ffffff',
       },
     );
+    this.poweredBy.setOrigin(0.5, 0.5);
 
     this.tweens.add({
       targets: this.creditTitle,
       y: -300,
-      duration: 2000,
+      delay: 1000,
+      duration: 3000,
       ease: 'linear',
       repeat: -1,
     });
@@ -50,7 +52,8 @@ export default class CreditsScene extends Phaser.Scene {
     this.tweens.add({
       targets: this.createdBy,
       y: -300,
-      duration: 2000,
+      delay: 1000,
+      duration: 3000,
       ease: 'linear',
       repeat: -1,
     });
@@ -58,7 +61,8 @@ export default class CreditsScene extends Phaser.Scene {
     this.tweens.add({
       targets: this.poweredBy,
       y: -300,
-      duration: 2000,
+      delay: 1000,
+      duration: 3000,
       ease: 'linear',
       repeat: -1,
     });
