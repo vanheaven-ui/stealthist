@@ -6,7 +6,7 @@ export default class GuideTwo extends Phaser.Scene {
   }
 
   create() {
-    this.titleText = 'FORAGE SCENE INSTRUCTIONS';
+    this.titleText = 'STEALTH SCENE INSTRUCTIONS';
     this.guideText = `You were camping with your girlfriend, and a local gang attacked you, 
                       kidnapped your girlfriend, and left you in bad health as you tried to ward them off. 
                       Now you have to forage through the bushes and replenish your energy. 

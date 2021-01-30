@@ -15,11 +15,15 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('tiles', 'assets/images/RPG Nature Tileset.png');
     this.load.tilemapTiledJSON('map', 'assets/map/nature.json');
 
-    this.load.image('play', 'assets/images/play_button.png');
-    this.load.image('options', 'assets/images/options_button.png');
+    this.load.image('play', 'assets/images/play.png');
+    this.load.image('options', 'assets/images/options.png');
+    this.load.image('credits', 'assets/images/credits.png');
     this.load.atlas('dude1', 'assets/images/dude1.png', 'assets/images/dude1_atlas.json');
 
     this.load.image('chicken', 'assets/images/chicken.png');
+    this.load.image('ananas', 'assets/images/ananas.png');
+    this.load.image('apple', 'assets/images/apple.png');
+    this.load.image('banana','assets/images/banana.png');
 
     this.loadingBar = this.add.graphics();
     this.loadingBox = this.add.graphics();

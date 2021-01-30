@@ -29,7 +29,23 @@ export default class GameScene extends Phaser.Scene {
     this.score = this.add.text(150, 240, `${this.HP} %`, { fill: '#00ff00', font: '32px garamond' } );
 
     this.food = this.createChicken();
-    console.log(this.food);
+
+    this.otherFoods = this.physics.add.group();
+    for (let i = 0; i < 5; i += 1) {
+      this.otherFoods.create(
+        Phaser.Math.Between(100, 750),
+        Phaser.Math.Between(150, 550), 
+        'banana',
+      );
+
+      this.otherFoods.create(
+        Phaser.Math.Between(100, 500),
+        Phaser.Math.Between(150, 500), 
+        'ananas',
+      );
+    }
+
+    // this.createOtherFoods();
 
     layer1.setCollisionByExclusion([-1]);
     // this.physics.arcade.convertTilemapLayer(layer1);
@@ -42,6 +58,7 @@ export default class GameScene extends Phaser.Scene {
     this.cameras.main.roundPixels = true;
 
     this.physics.add.overlap(this.player, this.food, this.improveHP, null, this);
+    this.physics.add.overlap(this.player, this.otherFoods, this.improveHP, null, this);
   }
 
   createChicken() {
@@ -62,14 +79,30 @@ export default class GameScene extends Phaser.Scene {
     return food; 
   }
 
-  improveHP(player, chicken) {
+  // createOtherFoods() {
+    
+  //   this.otherFoods.create({
+  //     key: 'banana',
+  //     repeat: 3,
+  //     setXY: {
+  //       x: 0,
+  //       y: 120,
+  //       stepY: Phaser.Math.Between(180, 220),
+  //     }
+  //   });
+  //   return this.otherFoods;
+  // }
+
+  improveHP(player, ...args) {
     this.HPTweenText.setText('5+');
     setTimeout(() => this.HPTweenText.destroy(), 2000);
 
     this.cameras.main.shake(300);
-    chicken.disableBody(true, true);
+    args.forEach(food => {
+      food.disableBody(true, true);
+    });
 
-    this.HP += 5;
+    this.HP += 10;
 
     this.score.setText(`${this.HP} %`);
   }
