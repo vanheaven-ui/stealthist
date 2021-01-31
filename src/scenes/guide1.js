@@ -4,9 +4,6 @@ import CST from '../utils/utils';
 export default class GuideOne extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GUIDE1);
-  }
-
-  create() {
     this.titleText = 'FORAGE SCENE INSTRUCTIONS';
     this.guideText = `You were camping with your girlfriend in a public park, and a local gang attacked you, 
                       kidnapped your girlfriend, and left you in bad health as you tried to ward them off. 
@@ -28,7 +25,9 @@ export default class GuideOne extends Phaser.Scene {
                         2. To move down, you use the down keyboard key
                         3. To move left, you use the left keyboard key
                         4. To move right, you use the right keyboard key`
+  }
 
+  create() {
     const title = this.add.dom(
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2 * 0.20,
@@ -44,6 +43,22 @@ export default class GuideOne extends Phaser.Scene {
       CST.styles.guideTextStyle,
       this.guideText,
     );
+
+    this.add.dom(
+      CST.dimens(this).width / 2,
+      CST.dimens(this).height / 2 * 1.70,
+      'input',
+      { 
+        fill: '#111',
+        font: '19px monoscope',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        borderRadius: '10px',
+        padding: '0, 5px',
+      },
+    );
+
+    this.domInputRef = document.querySelector('input');
+    this.domInputRef.setAttribute('placeholder', 'Enter your name and click Let\'s Go..');
 
     // guide.setAngle(-15);
   
@@ -81,12 +96,12 @@ export default class GuideOne extends Phaser.Scene {
     this.menuBtn.setInteractive();
     
     this.proceedBtn.on('pointerdown', () => {
-      this.scene.start(CST.scenes.GAME);
+      localStorage.setItem('users', JSON.stringify(this.domInputRef.value));
+      this.scene.start(CST.scenes.GAME);     
     });
 
     this.menuBtn.on('pointerdown', () => {
       this.scene.start(CST.scenes.TITLE);
     });
   }
-
 }
