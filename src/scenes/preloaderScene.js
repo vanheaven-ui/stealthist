@@ -10,7 +10,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2, 'logo');
     this.load.image('background', 'assets/images/title_bg.jpg');
 
-    this.load.spritesheet('dude', 'assets/images/male.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('dude', 'assets/images/male.png', { frameWidth: 6, frameHeight: 6 });
 
     this.load.image('tiles', 'assets/images/RPG Nature Tileset.png');
     this.load.tilemapTiledJSON('map', 'assets/map/nature.json');
