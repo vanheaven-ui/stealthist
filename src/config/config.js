@@ -40,7 +40,7 @@ const config = {
     createContainer: true,
   },
   scale: {
-    
+    autocenter: Phaser.Scale.CENTER_BOTH,
   }
 }
 
