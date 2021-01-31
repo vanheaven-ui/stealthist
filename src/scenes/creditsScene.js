@@ -66,9 +66,17 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'linear',
       repeat: -1,
     });
+    
+    this.menuBtn = this.add.image(
+      CST.dimens(this).width / 2 - 200,
+      CST.dimens(this).height * 0.9,
+      'menu'
+    );
 
-    this.input.on('pointerdown', () => {
-      this.scene.start(CST.scenes.GUIDE1);
-    });    
+    this.menuBtn.setInteractive();
+
+    this.menuBtn.on('pointerdown', () => {
+      this.scene.start(CST.scenes.TITLE);
+    });   
   }
 }
