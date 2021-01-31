@@ -1,0 +1,88 @@
+{
+    "anims": [
+        {
+            "key": "down",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "dude1",
+                    "frame": "down"
+                },
+                {
+                    "key": "dude1",
+                    "frame": "down_right"
+                },
+                {
+                    "key": "dude1",
+                    "frame": "down_left"
+                }
+            ]
+        },
+        {
+            "key": "up",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "dude1",
+                    "frame": "up"
+                },
+                {
+                    "key": "dude1",
+                    "frame": "up_right"
+                },
+                {
+                    "key": "dude1",
+                    "frame": "up_left"
+                }
+            ]
+        },
+        {
+            "key": "right",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "dude1",
+                    "frame": "down_right"
+                },
+                {
+                    "key": "dude1",
+                    "frame": "down"
+                }
+            ]
+        },
+        {
+            "key": "left",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "dude1",
+                    "frame": "down_left"
+                },
+                {
+                    "key": "dude1",
+                    "frame": "down"
+                }
+            ]
+        },
+        {
+            "key": "idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "dude1",
+                    "frame": "down"
+                }
+            ]
+        }
+    ]
+}
