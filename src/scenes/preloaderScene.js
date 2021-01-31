@@ -36,6 +36,10 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.audio('gameSound', 'assets/audio/game.mp3');
 
+    this.load.spritesheet('dude4', 'assets/sprites/ezekiel.png', { frameWidth: 60, frameHeight: 70 });
+
+    this.load.animation('dude_anim', 'assets/sprites/dude1_anim.json');
+
     this.loadingBar = this.add.graphics();
     this.loadingBox = this.add.graphics();
     this.loadingBox.fillStyle(0x222222, 0.8);

@@ -13,6 +13,8 @@ export default class GameScene extends Phaser.Scene {
   create() {
     this.player = new Player(this, 20, 20, 'dude1', 'down').setDepth(1);
 
+    // this.player1 = new Player(this, 100, 100, 'dude4', 0).setDepth(1);
+
     this.player.cursors = this.input.keyboard.createCursorKeys();
 
     const map = this.make.tilemap({ key: 'map' });
