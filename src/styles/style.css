@@ -7,12 +7,14 @@ body {
 /* body {
   text-align: center;
 }
+*/
 
-#stealthist-wrap {
-  width: 800;
-  margin: 0 auto;
+body div {
+  width: 1000px;
+  height: 600px;
+
 }
-
+/*
 p,
 h1
  {
