@@ -8,6 +8,7 @@ export default class GameScene extends Phaser.Scene {
     this.HP = 15;
     this.score;
     this.HPTweenText;
+    this.hittext;
   }
 
   create() {
@@ -21,6 +22,12 @@ export default class GameScene extends Phaser.Scene {
     const tileset = map.addTilesetImage('RPG Nature Tileset', 'tiles', 32, 32, 0, 0);
     const layer1 = map.createLayer('Tile Layer 1', tileset, 0, 0);
     const layer2 = map.createLayer('Tile Layer 2', tileset, 0, 0);
+    this.hittext = this.add.text(200, 100, '', { fontSize: '28px' });
+
+    [ layer1, layer2 ].forEach(layer => layer.setCollisionByProperty({ collides: true }));
+
+    this.physics.add.collider(this.player, layer1, () => this.hittext.setText('true'), null, this);
+    this.physics.add.collider(this.player, layer2, () => this.player.setTint(0xff0000), null, this);
 
     this.HPTweenText = this.add.text(
       CST.dimens.width,
@@ -48,9 +55,6 @@ export default class GameScene extends Phaser.Scene {
     }
 
     // this.createOtherFoods();
-
-    layer1.setCollisionByExclusion([-1]);
-    // this.physics.arcade.convertTilemapLayer(layer1);
 
     this.physics.world.bounds.width = map.widthInPixels;
     this.physics.world.bounds.height = map.heightInPixels;
