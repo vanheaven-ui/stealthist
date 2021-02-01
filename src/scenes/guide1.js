@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Menu from '../utils/menu';
 import CST from '../utils/utils';
 
 export default class GuideOne extends Phaser.Scene {
@@ -85,23 +86,13 @@ export default class GuideOne extends Phaser.Scene {
       CST.dimens(this).height * 0.9,
       'proceed'
     );
-
-    this.menuBtn = this.add.image(
-      CST.dimens(this).width / 2 - 200,
-      CST.dimens(this).height * 0.9,
-      'menu'
-    );
-
     this.proceedBtn.setInteractive();
-    this.menuBtn.setInteractive();
     
     this.proceedBtn.on('pointerdown', () => {
       localStorage.setItem('users', JSON.stringify(this.domInputRef.value));
       this.scene.start(CST.scenes.GAME);     
     });
 
-    this.menuBtn.on('pointerdown', () => {
-      this.scene.start(CST.scenes.TITLE);
-    });
+    Menu.createMenuBtn(this);
   }
 }

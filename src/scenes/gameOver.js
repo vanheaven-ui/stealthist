@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Menu from '../utils/menu';
 import CST from '../utils/utils';
 
 export default class GameOver extends Phaser.Scene {
@@ -7,16 +8,6 @@ export default class GameOver extends Phaser.Scene {
   }
 
   create() {
-    this.menuBtn = this.add.image(
-      CST.dimens(this).width / 2 - 200,
-      CST.dimens(this).height * 0.9,
-      'menu',
-    );
-
-    this.menuBtn.setInteractive();
-
-    this.menuBtn.on('pointerdown', () => {
-      this.scene.start(CST.scenes.TITLE);
-    });
+    Menu.createMenuBtn();
   }
 }
