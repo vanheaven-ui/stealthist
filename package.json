@@ -27,7 +27,6 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "favicons-webpack-plugin": "^4.2.0",
-    "html-webpack-plugin": "^4.5.1",
     "style-loader": "^2.0.0",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
@@ -38,6 +37,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "html-webpack-plugin": "^4.5.1",
     "phaser": "^3.52.0",
     "phaser-matter-collision-plugin": "^0.10.2",
     "webpack-merge": "^5.7.3"
