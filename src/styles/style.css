@@ -3,22 +3,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-/* body {
-  text-align: center;
-}
-*/
-
-body div {
-  width: 1000px;
-  height: 600px;
-
-}
-/*
-p,
-h1
- {
-  width: inherit;
-} */
-
-
