@@ -14,14 +14,14 @@ const CST = {
   dimens: (scene) => {
     return {
       width: scene.game.renderer.width,
-      height: scene.game.renderer.height
-    }
+      height: scene.game.renderer.height,
+    };
   },
   cameraDimens: (scene) => {
     return {
       width: scene.cameras.main.width,
       height: scene.cameras.main.height, 
-    }
+    };
   },
   styles: {
     style1: {
@@ -42,14 +42,12 @@ const CST = {
     guideTextStyle: {
       'color': '#ffffff',
       'line-spacing': '3px',
-      'text-align': 'center',
       'font': '15px monospace',
       'border': '2px solid #fff',
       'border-radius': '10px',
       'padding': '10px',
-      'text-align': 'justify',
-    }
-  }
-}
+    },
+  },
+};
 
 export default CST;
