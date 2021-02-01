@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import CST from '../utils/utils';
+import MyModule from '../utils/assetLoad';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -7,39 +8,8 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
+    MyModule.assetLoad(this);
     this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2, 'logo');
-    this.load.image('background', 'assets/images/title_bg.jpg');
-
-    this.load.spritesheet('dude', 'assets/images/male.png', { frameWidth: 6, frameHeight: 6 });
-
-    this.load.image('tiles', 'assets/images/RPG Nature Tileset.png');
-    this.load.tilemapTiledJSON('map', 'assets/map/nature.json');
-
-    this.load.image('play', 'assets/images/play.png');
-    this.load.image('options', 'assets/images/options.png');
-    this.load.image('credits', 'assets/images/credits.png');
-    this.load.atlas('dude1', 'assets/images/dude1.png', 'assets/images/dude1_atlas.json');
-
-    this.load.image('chicken', 'assets/images/chicken.png');
-    this.load.image('ananas', 'assets/images/ananas.png');
-    this.load.image('apple', 'assets/images/apple.png');
-    this.load.image('banana','assets/images/banana.png');
-
-    this.load.image('proceed', 'assets/images/continue.png');
-    this.load.image('menu', 'assets/images/menu.png');
-    this.load.image('playScene', 'assets/images/play.png');
-
-    this.load.image('enable-music', 'assets/images/enableMusic.png');
-    this.load.image('disable-music', 'assets/images/disable.png');
-    this.load.image('enabled', 'assets/images/musicEnabled.png');
-    this.load.image('disabled', 'assets/images/musicDisabled.png');
-
-    this.load.audio('gameSound', 'assets/audio/game.mp3');
-
-    this.load.spritesheet('dude4', 'assets/sprites/ezekiel.png', { frameWidth: 60, frameHeight: 70 });
-
-    this.load.animation('dude_anim', 'assets/sprites/dude1_anim.json');
-
     this.loadingBar = this.add.graphics();
     this.loadingBox = this.add.graphics();
     this.loadingBox.fillStyle(0x222222, 0.8);
