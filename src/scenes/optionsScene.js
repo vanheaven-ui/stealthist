@@ -9,6 +9,40 @@ export default class OptionsScene extends Phaser.Scene {
   create() {
     this.sound.pauseOnBlur = false;
 
+    this.createMusicBtns();
+
+    this.enable.on('pointerdown', (e) => {
+      console.log('Music turned on');
+      this.sound.play('gameSound', {loop: true});
+      this.enable.setVisible(false);
+      this.disabled.setVisible(false);
+      this.disable.setVisible(true);
+      this.enabled.setVisible(true);
+    });
+
+    this.disable.on('pointerdown', (e) => {
+      console.log('Music turned off');
+      this.sound.pauseAll();
+      this.disable.setVisible(false);
+      this.enabled.setVisible(false);
+      this.enable.setVisible(true);
+      this.disabled.setVisible(true);
+    });
+
+    this.menuBtn = this.add.image(
+      CST.dimens(this).width / 2 - 200,
+      CST.dimens(this).height * 0.9,
+      'menu',
+    );
+
+    this.menuBtn.setInteractive();
+
+    this.menuBtn.on('pointerdown', () => {
+      this.scene.start(CST.scenes.TITLE);
+    });
+  }
+
+  createMusicBtns() {
     this.enable = this.add.image(
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2 - 100,
@@ -46,41 +80,6 @@ export default class OptionsScene extends Phaser.Scene {
 
     defaultState.concat(changedState).forEach(state => {
       state.setInteractive();
-    });
-
-    this.enable.on('pointerdown', (e) => {
-      console.log('Music turned on');
-      this.sound.play('gameSound', {loop: true});
-      this.enable.setVisible(false);
-      this.disabled.setVisible(false);
-      this.disable.setVisible(true);
-      this.enabled.setVisible(true);
-    });
-
-    this.disable.on('pointerdown', (e) => {
-      console.log('Music turned off');
-      this.sound.pauseAll();
-      this.disable.setVisible(false);
-      this.enabled.setVisible(false);
-      this.enable.setVisible(true);
-      this.disabled.setVisible(true);
-    });
-
-
-
-
-
-
-    this.menuBtn = this.add.image(
-      CST.dimens(this).width / 2 - 200,
-      CST.dimens(this).height * 0.9,
-      'menu',
-    );
-
-    this.menuBtn.setInteractive();
-
-    this.menuBtn.on('pointerdown', () => {
-      this.scene.start(CST.scenes.TITLE);
     });
   }
 }
