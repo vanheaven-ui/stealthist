@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Menu from '../utils/menu';
-import CST from '../utils/utils';
+import { CST } from '../utils/utils';
 
 export default class GuideOne extends Phaser.Scene {
   constructor() {
@@ -61,8 +61,6 @@ export default class GuideOne extends Phaser.Scene {
     this.domInputRef = document.querySelector('input');
     this.domInputRef.setAttribute('placeholder', 'Enter your name and click Let\'s Go..');
 
-    // guide.setAngle(-15);
-  
     this.tweens.add({
         targets: title,
         y: -50,
@@ -81,6 +79,8 @@ export default class GuideOne extends Phaser.Scene {
       yoyo: true
     });
 
+    Menu.createMenuBtn(this);
+
     this.proceedBtn = this.add.image(
       CST.dimens(this).width / 2 + 200,
       CST.dimens(this).height * 0.9,
@@ -89,10 +89,13 @@ export default class GuideOne extends Phaser.Scene {
     this.proceedBtn.setInteractive();
     
     this.proceedBtn.on('pointerdown', () => {
-      localStorage.setItem('users', JSON.stringify(this.domInputRef.value));
+      if (this.domInputRef.value === '') {
+        localStorage.setItem('player', JSON.stringify('Anonymous'));
+      }
+      else {
+        localStorage.setItem('player', JSON.stringify(this.domInputRef.value));
+      }
       this.scene.start(CST.scenes.GAME);     
     });
-
-    Menu.createMenuBtn(this);
   }
 }

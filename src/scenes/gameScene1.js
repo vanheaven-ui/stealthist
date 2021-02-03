@@ -1,22 +1,112 @@
 import Phaser from 'phaser';
-import CST from '../utils/utils';
+import { CST } from '../utils/utils';
+import Player from '../characters/player';
+import Timer from '../utils/timer';
 
 export default class StealthScene extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GAME1);
+    this.hittext;
+    this.health;
+    this.HP = JSON.parse(localStorage.getItem('healthPoints'));
+    this.username = JSON.parse(localStorage.getItem('player'));
+    this.playername;
+    this.timeText;
+    this.min = 0;
+    this.sec = 0;
+    this.gameOver = false;
+    this.trapped;
+    this.winText;
+    this.healthText;
   }
 
   create() {
-    this.menuBtn = this.add.image(
-      CST.dimens(this).width / 2 - 200,
-      CST.dimens(this).height * 0.9,
-      'menu',
-    );
+    this.player = new Player(this, 20, 20, 'dude1', 'down').setDepth(1);
 
-    this.menuBtn.setInteractive();
+    this.player.cursors = this.input.keyboard.createCursorKeys();
+    this.timer = new Timer(this, 0, this.timeText);
 
-    this.menuBtn.on('pointerdown', () => {
-      this.scene.start(CST.scenes.TITLE);
-    });
+    this.overSound = this.sound.add('game-over', { volume: 1 });
+
+    this.health = this.add.text(100, 5, `Health: ${this.HP}%`, { fill: '#00ff00', font: '32px roboto' }).setDepth(1);
+    this.playername = this.add.text(20, 100, `Rock on! ${this.username}`, { fill: '#00ff00', font: '32px roboto' }).setDepth(1);
+    this.timeText = this.add.text(20, 180, 'Time:', { fill: '#00ff00', font: '32px roboto' }).setDepth(1);
+    this.trapped = this.add.text(20, 210, '', { fill: '#00ff00', font: '32px roboto' }).setDepth(1);
+    this.winText = this.add.text(20, 500, '', { fill: '#00ff00', font: '32px roboto' }).setDepth(2);
+
+    const map = this.make.tilemap({ key: 'map2' });
+    const tileset = map.addTilesetImage('Dungeon_Tileset_at', 'tiles3', 32, 32, 0, 0);
+    const layer1 = map.createLayer('rooms', tileset, 0, 0);
+    const layer2 = map.createLayer('snareLayer', tileset, 0, 0);
+    const layer3 = map.createLayer('lessHarmLayer', tileset, 0, 0);
+    const layer4 = map.createLayer('treasureLayer', tileset, 0, 0);
+    this.hittext = this.add.text(this.cameras.main.width / 2, 300, '', { fontSize: '22px' });
+
+    [layer1, layer2, layer3, layer4].forEach(layer => layer.setCollisionByProperty({ collides: true }));
+
+    this.physics.add.collider(this.player, layer1, () => this.hittext.setText('true'), null, this);
+    this.physics.add.collider(this.player, layer2, this.trapFall, null, this);
+    this.physics.add.collider(this.player, layer3, this.healthDent, null, this);
+    this.physics.add.collider(this.player, layer4, this.endByTreasure, null, this);
+
+    this.physics.world.bounds.width = map.widthInPixels;
+    this.physics.world.bounds.height = map.heightInPixels;
+
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.startFollow(this.player);
+    this.cameras.main.roundPixels = true;
+  }
+
+  trapFall(player, trap) {
+    this.gameOver = true;
+    this.trapped.setVisible(true);
+    this.trapped.setText('Trapped!!');
+    this.physics.pause();
+    
+    setTimeout(() => {
+      this.player.disableBody(true, true);
+      this.trapped.setVisible(false);
+      this.scene.start(CST.scenes.GAMEOVER);
+    }, 1000);
+    
+    
+  }
+
+  healthDent(player, obstacle) {
+    this.hittext.setVisible(true);
+    this.hittext.setText('health -5');
+    setTimeout(() => this.hittext.setVisible(false), 1000);
+    this.HP -= 5;
+    this.health.setText(`Health: ${this.HP}%`);
+  }
+
+  endByTreasure(player, treasure) {
+    this.gameOver = true;
+    this.physics.pause();
+    this.winText.setVisible(true);
+    this.winText.setText('💪Yay! You made it');
+
+    setTimeout(() => {
+      this.winText.setVisible(false);
+      this.scene.start(CST.scenes.GAMEOVER);
+    }, 1000);
+  }
+
+  update() {
+    this.player.movePlayer();
+
+    this.timeText.setText(`Time: ${ this.timer.printTime(this.min, this.sec) }`);
+    this.sec += 1
+    if (!this.gameOver) {
+      if (this.sec === 59) {
+        this.sec = 0;
+        this.min += 1;
+        this.timeText.setText(`Time: ${ this.timer.printTime(this.min, this.sec) }`);
+      }
+    }
+    else {
+      this.overSound.play();
+      localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}`}));
+    }
   }
 }

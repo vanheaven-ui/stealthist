@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import CST from '../utils/utils';
+import { CST } from '../utils/utils';
 import MyModule from '../utils/assetLoad';
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -9,38 +9,38 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     MyModule.assetLoad(this);
-    this.add.image(CST.dimens(this).width / 2, CST.dimens(this).height / 2, 'logo');
+    this.add.image(CST.dimens(this).width / 2, (CST.dimens(this).height / 2) - 2, 'logo');
     this.loadingBar = this.add.graphics();
     this.loadingBox = this.add.graphics();
     this.loadingBox.fillStyle(0x222222, 0.8);
-    this.loadingBox.fillRect(240, 270, 320, 50);
+    this.loadingBox.fillRect(230, 270, 300, 100);
 
     let loadingText = this.make.text({
       text: 'Loading...',
-      x: CST.cameraDimens(this).width / 2,
-      y: CST.cameraDimens(this).height / 2 - 50,
+      x: CST.dimens(this).width / 2,
+      y: (CST.dimens(this).height / 2) - 20,
       style: {
         font: '20px monospace',
-        fill: '#ffffff'
+        fill: '#ffffff',
       },
     });
     loadingText.setOrigin(0.5, 0.5);
 
     let percentText = this.make.text({
       text: '0%',
-      x: CST.cameraDimens(this).width / 2,
-      y: CST.cameraDimens(this).height / 2 - 5,
+      x: CST.dimens(this).width / 2,
+      y: (CST.dimens(this).height / 2) + 20,
       style: {
         font: '19px monospace',
-        fill: '#ffffff'
+        fill: '#ffffff',
       }      
     });
     percentText.setOrigin(0.5, 0.5);
 
     let assetText = this.make.text({
       text: '',
-      x: CST.cameraDimens(this).width / 2,
-      y: CST.cameraDimens(this).height / 2 + 50,
+      x: CST.dimens(this).width / 2,
+      y: (CST.dimens(this).height / 2) * 1.2,
       style: {
         font: '20px monospace',
         fill: '#ffffff',
@@ -49,9 +49,10 @@ export default class PreloaderScene extends Phaser.Scene {
     assetText.setOrigin(0.5, 0.5);
 
     this.load.on('progress', percent => {
-      this.loadingBar.fillStyle(0xffffff, 1);
-      this.loadingBar.fillRect(250, 280, 300 * percent, 30);
+      this.loadingBar.fillStyle('#ffffff66', 1);
+      this.loadingBar.fillRect(250, 300, 300 * percent, 30);
       percentText.setText(parseInt(percent * 100, 10) + '%');
+      this.loadingBox.fillStyle('#2121211a', 0.8);
     });
 
     this.load.on('fileprogress', file => {

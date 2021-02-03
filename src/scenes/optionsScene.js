@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Menu from '../utils/menu';
-import CST from '../utils/utils';
+import { CST } from '../utils/utils';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
@@ -8,22 +8,22 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
+    let gameSound = this.sound.add('gameSound',{ loop: true, volume: 0.8 });
     this.sound.pauseOnBlur = false;
 
+    this.add.image(CST.dimens(this).width / 2, 50, 'options-title');
     this.createMusicBtns();
 
-    this.enable.on('pointerdown', (e) => {
-      console.log('Music turned on');
-      this.sound.play('gameSound', {loop: true});
+    this.enable.on('pointerdown', () => {
+      gameSound.play();
       this.enable.setVisible(false);
       this.disabled.setVisible(false);
       this.disable.setVisible(true);
       this.enabled.setVisible(true);
     });
 
-    this.disable.on('pointerdown', (e) => {
-      console.log('Music turned off');
-      this.sound.pauseAll();
+    this.disable.on('pointerdown', () => {
+      this.sound.stopAll();
       this.disable.setVisible(false);
       this.enabled.setVisible(false);
       this.enable.setVisible(true);
