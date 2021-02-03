@@ -42,6 +42,11 @@ const CST = {
       'padding': '10px',
     },
   },
+  state: {
+    forageFail: false,
+    stealthFail: false,
+    StealthTimeFail: false,
+  }
 };
 
 const sortArrayByScore = (array) => {
