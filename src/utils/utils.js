@@ -10,6 +10,8 @@ const CST = {
     CREDITS: 'CREDITS',
     GAME1: 'STEALTH',
     GAMEOVER: 'GAMEOVER',
+    FAIL: 'FAIL',
+    LEADER: 'LEADER',
   },
   dimens: (scene) => {
     return {
@@ -24,20 +26,12 @@ const CST = {
     };
   },
   styles: {
-    style1: {
-
-    },
-    style2: {
-
-    },
-    style3: {
-
-    },
+    healthStyle: { fill: '#ff0000', font: '32px monospace' },
+    nameStyle: { fill: '#111111', font: '18px monospace' },
     guideTitleStyle: {
       'color': '#00ff00',
       'text-decoration': 'underline',
       'text-align': 'center',
-
     },
     guideTextStyle: {
       'color': '#ffffff',
@@ -50,4 +44,9 @@ const CST = {
   },
 };
 
-export default CST;
+const sortArrayByScore = (array) => {
+  array.sort((a, b) => b.score.min - a.score.min);
+  return array;
+}
+
+export { CST, sortArrayByScore };
