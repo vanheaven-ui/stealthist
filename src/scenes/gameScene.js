@@ -125,6 +125,7 @@ export default class GameScene extends Phaser.Scene {
   endByTimer(min, sec) {
     if (min === 0 && sec === 0) {
       this.fail = true;
+      CST.state.forageFail = true;
     }
   }
 
@@ -163,6 +164,12 @@ export default class GameScene extends Phaser.Scene {
         this.failText.setVisible(false);
         this.scene.start(CST.scenes.FAIL);
       }, 3000);
+    }
+  }
+
+  static trackGameFailState() {
+    if (this.fail) {
+      CST.state.forageFail = true;
     }
   }
 }
