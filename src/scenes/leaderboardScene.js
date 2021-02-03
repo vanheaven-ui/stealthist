@@ -15,7 +15,7 @@ export default class Leaderboard extends Phaser.Scene {
   create() {
     this.add.image(CST.dimens(this).width / 2, 80, 'best-score');
     this.add.image(360, 130, 'player');
-    this.add.image(460, 130, 'player-score');
+    this.add.image(450, 130, 'player-score');
     this.timer = new Timer(0);
     this.playAgainBtn = this.add.image(620, 300, 'play-again');
     this.menuBtn = this.add.image(150, 300, 'menu');

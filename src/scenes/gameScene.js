@@ -38,11 +38,7 @@ export default class GameScene extends Phaser.Scene {
     this.hitText = this.add.text(200, 100, '', { font: '28px roboto' });
     this.timerText = this.add.text(550, 0, 'counter', CST.styles.nameStyle);
 
-    this.failText = this.add.text(
-      CST.dimens(this).width / 2, 
-      CST.dimens(this).height / 2,
-      '',
-    );
+    this.failText = this.add.text(45, 300, '', { font: '19px monospace' } );
 
     [layer1, layer2].forEach(layer => layer.setCollisionByProperty({ collides: true }));
 
@@ -142,7 +138,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    // this.timer.countDown();
     if (this.seconds > 0) {
       this.seconds -= 1;
       this.timerText.setText(`Countdown👉  ${this.timer.printTime(this.minutes, this.seconds)}`);
