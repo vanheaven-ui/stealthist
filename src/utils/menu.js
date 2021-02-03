@@ -1,4 +1,4 @@
-import CST from './utils';
+import { CST } from './utils';
 
 export default class Menu {
   static createMenuBtn(scene) {
