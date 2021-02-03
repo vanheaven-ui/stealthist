@@ -60,6 +60,14 @@ const MyModule = (() => {
     scene.load.image('play-again', 'assets/images/play-again.png');
 
     scene.load.image('yourtime', 'assets/images/yourtime.png');
+
+    scene.load.image('sorry', 'assets/images/sorry.png');
+
+    scene.load.image('close', 'assets/images/close.png');
+
+    scene.load.image('timeout', 'assets/images/timeout.png');
+
+    scene.load.image('congs', 'assets/images/congs.png');
   }
   return { assetLoad }
 })();
