@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import Menu from '../utils/menu';
 import { CST } from '../utils/utils';
 import APIHandler from '../utils/apiHandler';
+import Timer from '../utils/timer';
 
 export default class GameOver extends Phaser.Scene {
   constructor() {
@@ -15,6 +16,8 @@ export default class GameOver extends Phaser.Scene {
     this.add.image(CST.dimens(this).width / 2, 100, 'gameoverTitle');
     this.add.image(CST.dimens(this).width / 2, 180, 'welldone');
     this.add.image(CST.dimens(this).width / 2, 250, 'yourtime');
+
+    this.timer = new Timer(0);
 
     Menu.createMenuBtn(this);
 
@@ -31,7 +34,7 @@ export default class GameOver extends Phaser.Scene {
     this.score = this.add.text(
       350,
       300,
-      `${this.timeMins} : ${this.timeSecs}`,
+      `${this.timer.printTime(this.timeMins,this.timeSecs)}`,
       {
         fontSize: '32px'
       }

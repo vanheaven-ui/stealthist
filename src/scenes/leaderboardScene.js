@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import APIHandler from '../utils/apiHandler';
+import Timer from '../utils/timer';
 import { CST, sortArrayByScore } from '../utils/utils';
 
 export default class Leaderboard extends Phaser.Scene {
@@ -15,6 +16,7 @@ export default class Leaderboard extends Phaser.Scene {
     this.add.image(CST.dimens(this).width / 2, 80, 'best-score');
     this.add.image(360, 130, 'player');
     this.add.image(460, 130, 'player-score');
+    this.timer = new Timer(0);
     this.playAgainBtn = this.add.image(620, 300, 'play-again');
     this.menuBtn = this.add.image(150, 300, 'menu');
 
@@ -58,11 +60,11 @@ export default class Leaderboard extends Phaser.Scene {
 
     APIHandler.getData(this.baseEndPoint)
     .then(data => {
-      sortArrayByScore(data.result).forEach((result, index) => {
+      sortArrayByScore(data.result).forEach((userObj, index) => {
         this.add.text(
           280,
           170 + this.space,
-          `${index + 1}. ${result.user} | ${result.score.min} : ${result.score.sec}`,
+          `${index + 1}. ${userObj.user} | ${this.timer.printTime(userObj.score.min, userObj.score.sec)}`,
           {
             font: '19px monospace',
             fill: '#0000ff',
