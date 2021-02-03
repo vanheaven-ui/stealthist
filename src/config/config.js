@@ -45,9 +45,6 @@ const config = {
   dom: {
     createContainer: true,
   },
-  scale: {
-    autocenter: Phaser.Scale.CENTER_BOTH,
-  }
 }
 
 export default config;
