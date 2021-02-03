@@ -12,7 +12,6 @@ export default class GameOver extends Phaser.Scene {
   }
 
   create() {
-    console.log(this.playerTime);
     this.add.image(CST.dimens(this).width / 2, 100, 'gameoverTitle');
     this.add.image(CST.dimens(this).width / 2, 180, 'welldone');
     this.add.image(CST.dimens(this).width / 2, 250, 'yourtime');
@@ -27,7 +26,6 @@ export default class GameOver extends Phaser.Scene {
     restartBtn.on('pointerdown', () => location.reload());
 
     this.timeObj = APIHandler.modifyTime(this.playerTime.min, this.playerTime.sec);
-    console.log(this.timeObj);
     this.timeMins = this.timeObj.min;
     this.timeSecs = this.timeObj.sec;
 
