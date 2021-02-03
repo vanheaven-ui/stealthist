@@ -1,27 +1,33 @@
 const APIHandler = (() => {
-  const postEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-  const baseGETEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/CdISo1zrmscAtAtqHEmn/scores';
-  const gameData = { name: 'stealthist' };
- 
-  const postData = async(url, data) => {
-    const response = await fetch(url, {
+  const postData = async(url, dataObj) => {
+    const response = await fetch (url, {
       mode: 'cors',
       method: 'POST',
       headers: {
-        COntent_Type: 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataObj),
     })
     return response.json();
-  };
+  }
 
   const getData = async(url) => {
-    const response = await (await fetch(url));
+    const response = await fetch(url);
   
     return response.json();
   }
 
-  return { postData, getData };
+  const modifyTime = (min, sec) => {
+    let minInt = parseInt(min);
+    let secInt = parseInt(sec);
+    if (secInt >= 60 && minInt < 60) {
+      minInt += Math.floor(secInt / 60);
+      secInt = sec % 60; 
+    }
+    return { min: minInt.toString(), sec: secInt.toString() };
+  }
+
+  return { postData, getData, modifyTime };
 })();
 
 export default APIHandler;
