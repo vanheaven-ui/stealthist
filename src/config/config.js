@@ -1,10 +1,13 @@
 import Phaser from 'phaser';
 import BootScene from '../scenes/bootScene';
 import CreditsScene from '../scenes/creditsScene';
+import FailScene from '../scenes/failScene';
+import GameOver from '../scenes/gameOver';
 import GameScene from '../scenes/gameScene';
 import StealthScene from '../scenes/gameScene1';
 import GuideOne from '../scenes/guide1';
 import GuideTwo from '../scenes/guide2';
+import Leaderboard from '../scenes/leaderboardScene';
 import OptionsScene from '../scenes/optionsScene';
 import PreloaderScene from '../scenes/preloaderScene';
 import TitleScene from '../scenes/titleScene';
@@ -24,6 +27,9 @@ const config = {
     GameScene,
     GuideTwo,
     StealthScene,
+    GameOver,
+    FailScene,
+    Leaderboard,
   ],
   audio: {
     disableWebAudio: true
