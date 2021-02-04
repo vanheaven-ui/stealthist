@@ -68,11 +68,11 @@ As per project specifications, the game implemented the following scenes in the 
 #### Game Design Implementaion
 Most of the design concepts were implemented in this respository. However, some design concepts are still pending and these include:
 - Using a different game character for the second scene to show better health.
-- character being able to pich animated coins in the second play scene of the game.
+- Character being able to pick animated coins in the second play scene of the game.
 - Stopping the up counter when game is ended.
 - Having a dynamic scoreboard that moves alongside the camera in the second game play scene.
 - More real sprite animations.
-- ANimated obstacles in the second game play scene.
+- Animated obstacles in the second game play scene.
 
 #### You can see a detailed Game Design Document [here](https://docs.google.com/document/d/1dJt-gpuQmJs6z9Y0iqfykcTqZ9fE9czj4H1sAQBZcKw/edit?usp=sharing)
 
