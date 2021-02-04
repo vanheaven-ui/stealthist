@@ -6,21 +6,13 @@ import Timer from '../utils/timer';
 export default class StealthScene extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GAME1);
-    this.hittext;
-    this.health;
     this.HP = JSON.parse(localStorage.getItem('healthPoints'));
     this.username = JSON.parse(localStorage.getItem('player'));
-    this.playername;
-    this.timeText;
     this.min = 0;
     this.sec = 0;
     this.trapEnd = false;
     this.fail = false;
     this.pass = false;
-    this.trapped;
-    this.winText;
-    this.healthText;
-    this.deadText;
   }
 
   create() {
@@ -46,7 +38,9 @@ export default class StealthScene extends Phaser.Scene {
     const layer4 = map.createLayer('treasureLayer', tileset, 0, 0);
     this.hittext = this.add.text(this.cameras.main.width / 2, 300, '', { fontSize: '22px' });
 
-    [layer1, layer2, layer3, layer4].forEach(layer => layer.setCollisionByProperty({ collides: true }));
+    const layers = [layer1, layer2, layer3, layer4];
+
+    layers.forEach(layer => layer.setCollisionByProperty({ collides: true }));
 
     this.physics.add.collider(this.player, layer1, () => this.hittext.setText('true'), null, this);
     this.physics.add.collider(this.player, layer2, this.trapFall, null, this);
@@ -61,19 +55,18 @@ export default class StealthScene extends Phaser.Scene {
     this.cameras.main.roundPixels = true;
   }
 
+  /* eslint-disable */
   trapFall(player, trap) {
     this.trapEnd = true;
     this.trapped.setVisible(true);
     this.trapped.setText('Trapped!!');
     this.physics.pause();
-    
+
     setTimeout(() => {
       this.player.disableBody(true, true);
       this.trapped.setVisible(false);
       this.scene.start(CST.scenes.FAIL);
     }, 1000);
-    
-    
   }
 
   healthDent(player, obstacle) {
@@ -104,21 +97,22 @@ export default class StealthScene extends Phaser.Scene {
     }, 1000);
   }
 
+  /* eslint-enable */
+
   update() {
     this.player.movePlayer();
 
-    this.timeText.setText(`Time: ${ this.timer.printTime(this.min, this.sec) }`);
-    this.sec += 1
+    this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
+    this.sec += 1;
     if (!this.pass) {
       if (this.sec === 59) {
         this.sec = 0;
         this.min += 1;
-        this.timeText.setText(`Time: ${ this.timer.printTime(this.min, this.sec) }`);
+        this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
       }
-    }
-    else {
+    } else {
       this.overSound.play();
-      localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}`}));
+      localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}` }));
     }
   }
 
@@ -126,7 +120,7 @@ export default class StealthScene extends Phaser.Scene {
     if (this.trapEnd) {
       CST.state.stealthFail = true;
     }
-    
+
     if (this.fail) {
       CST.state.StealthTimeFail = true;
     }

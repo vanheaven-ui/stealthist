@@ -1,13 +1,12 @@
 {
-  "name": "js-linters",
+  "name": "stealthist",
   "version": "1.0.0",
-  "description": "This has linters setup for Javascript projects",
+  "description": "HTML5 RPG using Phaser and JavaScript",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "eslint": "npx eslint .",
     "stylelint": "npx stylelint \"**/*.{css,scss}\""
   },
   "repository": {

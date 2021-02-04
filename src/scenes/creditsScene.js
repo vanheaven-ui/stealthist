@@ -12,7 +12,7 @@ export default class CreditsScene extends Phaser.Scene {
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2,
       'CREDITS',
-      { 
+      {
         font: '32px monoscope',
         fill: '#00ff00',
       },
@@ -23,9 +23,9 @@ export default class CreditsScene extends Phaser.Scene {
       CST.dimens(this).width / 2,
       CST.dimens(this).height,
       'Created By: Ezekiel Mworekwa',
-      { 
+      {
         font: '24px garamond',
-        fill: '#0000ff'
+        fill: '#0000ff',
       },
     );
     this.createdBy.setOrigin(0.5, 0.5);
@@ -34,7 +34,7 @@ export default class CreditsScene extends Phaser.Scene {
       CST.dimens(this).width / 2,
       CST.dimens(this).height * 1.50,
       'Powered By: Phaser 3',
-      { 
+      {
         fontSize: '18px',
         fill: '#ffffff',
       },

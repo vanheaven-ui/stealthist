@@ -24,16 +24,16 @@ export default class GuideOne extends Phaser.Scene {
                         1. To move up, use the up keyboard key
                         2. To move down, use the down keyboard key
                         3. To move left, use the left keyboard key
-                        4. To move right, use the right keyboard key`
+                        4. To move right, use the right keyboard key`;
   }
 
   create() {
     const title = this.add.dom(
       CST.dimens(this).width / 2,
-      CST.dimens(this).height / 2 * 0.20,
+      (CST.dimens(this).height / 2) * 0.20,
       'h1',
       CST.styles.guideTitleStyle,
-      this.titleText
+      this.titleText,
     );
 
     const guide = this.add.dom(
@@ -46,9 +46,9 @@ export default class GuideOne extends Phaser.Scene {
 
     this.add.dom(
       CST.dimens(this).width / 2,
-      CST.dimens(this).height / 2 * 1.70,
+      (CST.dimens(this).height / 2) * 1.70,
       'input',
-      { 
+      {
         fill: '#111',
         font: '19px monoscope',
         backgroundColor: 'rgba(255, 255, 255, 0.7)',
@@ -61,12 +61,12 @@ export default class GuideOne extends Phaser.Scene {
     this.domInputRef.setAttribute('placeholder', 'Enter your name and click Let\'s Go..');
 
     this.tweens.add({
-        targets: title,
-        y: -50,
-        duration: 3000,
-        ease: 'Sine.easeInOut',
-        loop: -1,
-        yoyo: true
+      targets: title,
+      y: -50,
+      duration: 3000,
+      ease: 'Sine.easeInOut',
+      loop: -1,
+      yoyo: true,
     });
 
     this.tweens.add({
@@ -75,7 +75,7 @@ export default class GuideOne extends Phaser.Scene {
       duration: 3000,
       ease: 'Sine.easeInOut',
       loop: -1,
-      yoyo: true
+      yoyo: true,
     });
 
     Menu.createMenuBtn(this);
@@ -83,18 +83,17 @@ export default class GuideOne extends Phaser.Scene {
     this.proceedBtn = this.add.image(
       CST.dimens(this).width / 2 + 200,
       CST.dimens(this).height * 0.9,
-      'proceed'
+      'proceed',
     );
     this.proceedBtn.setInteractive();
-    
+
     this.proceedBtn.on('pointerdown', () => {
       if (this.domInputRef.value === '') {
         localStorage.setItem('player', JSON.stringify('Anonymous'));
-      }
-      else {
+      } else {
         localStorage.setItem('player', JSON.stringify(this.domInputRef.value));
       }
-      this.scene.start(CST.scenes.GAME);     
+      this.scene.start(CST.scenes.GAME);
     });
   }
 }

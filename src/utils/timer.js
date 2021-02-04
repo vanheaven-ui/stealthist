@@ -6,8 +6,8 @@ export default class Timer {
   }
 
   printTime(min, sec) {
-    this.minFormat = min < 10 ? '0' + min : min;
-    this.secFormat = sec < 10 ? '0' + sec : sec;
+    this.minFormat = min < 10 ? `0${min}` : min;
+    this.secFormat = sec < 10 ? `0${sec}` : sec;
     return `${this.minFormat}:${this.secFormat}`;
   }
 

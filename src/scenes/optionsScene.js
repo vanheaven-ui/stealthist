@@ -8,7 +8,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
-    let gameSound = this.sound.add('gameSound',{ loop: true, volume: 0.8 });
+    const gameSound = this.sound.add('gameSound', { loop: true, volume: 0.8 });
     this.sound.pauseOnBlur = false;
 
     this.add.image(CST.dimens(this).width / 2, 50, 'options-title');
@@ -36,29 +36,29 @@ export default class OptionsScene extends Phaser.Scene {
     this.enable = this.add.image(
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2 - 100,
-      'enable-music'
+      'enable-music',
     );
 
     this.disable = this.add.image(
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2 + 100,
-      'disable-music'
+      'disable-music',
     );
 
     this.enabled = this.add.image(
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2 - 100,
-      'enabled'
+      'enabled',
     );
 
     this.disabled = this.add.image(
       CST.dimens(this).width / 2,
       CST.dimens(this).height / 2 + 100,
-      'disabled'
+      'disabled',
     );
 
-    let defaultState = [this.enable, this.disable];
-    let changedState = [this.enabled, this.disabled];
+    const defaultState = [this.enable, this.disable];
+    const changedState = [this.enabled, this.disabled];
 
     changedState.forEach(state => {
       state.setVisible(false);

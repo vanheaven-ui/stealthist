@@ -25,7 +25,7 @@ export default class GuideTwo extends Phaser.Scene {
                         1. To move up, use the up keyboard key
                         2. To move down, use the down keyboard key
                         3. To move left, use the left keyboard key
-                        4. To move right, use the right keyboard key`
+                        4. To move right, use the right keyboard key`;
   }
 
   create() {
@@ -33,10 +33,10 @@ export default class GuideTwo extends Phaser.Scene {
 
     const title = this.add.dom(
       CST.dimens(this).width / 2,
-      CST.dimens(this).height / 2 * 0.20,
+      (CST.dimens(this).height / 2) * 0.20,
       'h1',
       CST.styles.guideTitleStyle,
-      this.titleText
+      this.titleText,
     );
 
     const guide = this.add.dom(
@@ -55,7 +55,7 @@ export default class GuideTwo extends Phaser.Scene {
       duration: 3000,
       ease: 'Sine.easeInOut',
       loop: -1,
-      yoyo: true
+      yoyo: true,
     });
 
     this.tweens.add({
@@ -64,7 +64,7 @@ export default class GuideTwo extends Phaser.Scene {
       duration: 3000,
       ease: 'Sine.easeInOut',
       loop: -1,
-      yoyo: true
+      yoyo: true,
     });
 
     this.proceedBtn = this.add.image(
@@ -76,7 +76,7 @@ export default class GuideTwo extends Phaser.Scene {
     Menu.createMenuBtn(this);
 
     this.proceedBtn.setInteractive();
-    
+
     this.proceedBtn.on('pointerdown', () => {
       this.scene.start(CST.scenes.GAME1);
     });

@@ -1,4 +1,4 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 import APIHandler from '../utils/apiHandler';
 import Timer from '../utils/timer';
 import { CST, sortArrayByScore } from '../utils/utils';
@@ -7,8 +7,7 @@ export default class Leaderboard extends Phaser.Scene {
   constructor() {
     super(CST.scenes.LEADER);
     this.baseEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/CdISo1zrmscAtAtqHEmn/scores';
-    this.gameData = { "user": "", "score": "" };
-    this.successText;
+    this.gameData = { user: '', score: '' };
     this.space = 0;
   }
 
@@ -29,7 +28,7 @@ export default class Leaderboard extends Phaser.Scene {
     this.playAgainBtn.setAngle(15);
 
     this.playAgainBtn.on('pointerdown', () => {
-      location.reload();
+      location.reload(); // eslint-disable
     });
 
     this.menuBtn.on('pointerdown', () => {
@@ -38,41 +37,39 @@ export default class Leaderboard extends Phaser.Scene {
 
     this.gameData.user = JSON.parse(localStorage.getItem('player'));
     this.gameData.score = JSON.parse(localStorage.getItem('time'));
-    console.log(APIHandler.modifyTime(this.gameData.score.min, this.gameData.score.sec));
 
     APIHandler.postData(this.baseEndPoint, this.gameData)
-    .then(data => {
-      console.log(data);
-      this.successText = this.add.text(
-        180,
-        20,
-        `${data.result}`,
-        { 
-          fontSize: '22px',
-          fill: '#00ff00'
-        }
-      );
-      this.successText.setVisible(true);
-      setTimeout(() => {
-        this.successText.setVisible(false);
-      }, 1000);
-    });
+      .then(data => {
+        this.successText = this.add.text(
+          180,
+          20,
+          `${data.result}`,
+          {
+            fontSize: '22px',
+            fill: '#00ff00',
+          },
+        );
+        this.successText.setVisible(true);
+        setTimeout(() => {
+          this.successText.setVisible(false);
+        }, 1000);
+      });
 
     APIHandler.getData(this.baseEndPoint)
-    .then(data => {
-      sortArrayByScore(data.result).forEach((userObj, index) => {
-        this.add.text(
-          280,
-          170 + this.space,
-          `${index + 1}. ${userObj.user} | ${this.timer.printTime(userObj.score.min, userObj.score.sec)}`,
-          {
-            font: '19px monospace',
-            fill: '#0000ff',
-          }
-        );
-        this.space += 30;
+      .then(data => {
+        sortArrayByScore(data.result).forEach((userObj, index) => {
+          this.add.text(
+            280,
+            170 + this.space,
+            `${index + 1}. ${userObj.user} | ${this.timer.printTime(userObj.score.min, userObj.score.sec)}`,
+            {
+              font: '19px monospace',
+              fill: '#0000ff',
+            },
+          );
+          this.space += 30;
+        });
       });
-    });    
   }
 
   successMsg() {

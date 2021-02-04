@@ -7,16 +7,10 @@ export default class GameScene extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GAME);
     this.HP = 15;
-    this.health;
-    this.HPTweenText;
-    this.hitText;
-    this.username;
-    this.timerText;
     this.seconds = 59;
     this.minutes = 9;
     this.fail = false;
     this.pass = false;
-    this.failText;
   }
 
   create() {
@@ -34,11 +28,11 @@ export default class GameScene extends Phaser.Scene {
     const layer2 = map.createLayer('Tile Layer 2', tileset, 0, 0);
 
     this.timer = new Timer(this, 600, this.timerText);
-    
+
     this.hitText = this.add.text(200, 100, '', { font: '28px roboto' });
     this.timerText = this.add.text(550, 0, 'counter', CST.styles.nameStyle);
 
-    this.failText = this.add.text(45, 300, '', { font: '19px monospace' } );
+    this.failText = this.add.text(45, 300, '', { font: '19px monospace' });
 
     [layer1, layer2].forEach(layer => layer.setCollisionByProperty({ collides: true }));
 
@@ -46,13 +40,13 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, layer2, this.hitObstacle, null, this);
 
     this.HPTweenText = this.add.text(180, 35, '', { font: '19px monoscope', fill: '#00ff00' });
-    
+
     this.health = this.add.text(100, 0, `Health: ${this.HP}%`, CST.styles.healthStyle);
 
     this.playername = this.add.text(320, 0, `Howdy! ${this.username}`, CST.styles.nameStyle);
 
     this.food = this.createChicken();
-    
+
     this.createOtherFoods();
 
     this.physics.world.bounds.width = map.widthInPixels;
@@ -67,7 +61,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createChicken() {
-    let food = this.physics.add.group({
+    const food = this.physics.add.group({
       key: 'chicken',
       repeat: 5,
       setXY: {
@@ -75,13 +69,13 @@ export default class GameScene extends Phaser.Scene {
         y: 60,
         stepX: Phaser.Math.Between(120, 200),
         stepY: Phaser.Math.Between(80, 100),
-      }
+      },
     });
 
     food.children.iterate(child => {
       child.setScale(0.6);
     });
-    return food; 
+    return food;
   }
 
   createOtherFoods() {
@@ -89,18 +83,20 @@ export default class GameScene extends Phaser.Scene {
     for (let i = 0; i < 5; i += 1) {
       this.otherFoods.create(
         Phaser.Math.Between(100, 750),
-        Phaser.Math.Between(150, 550), 
+        Phaser.Math.Between(150, 550),
         'banana',
       );
 
       this.otherFoods.create(
         Phaser.Math.Between(100, 500),
-        Phaser.Math.Between(150, 500), 
+        Phaser.Math.Between(150, 500),
         'ananas',
       );
     }
     return this.otherFoods;
   }
+
+  /* eslint-disable */
 
   improveHP(player, ...foods) {
     this.collectSound.play();
@@ -115,6 +111,8 @@ export default class GameScene extends Phaser.Scene {
     this.health.setText(`Health: ${this.HP}%`);
     this.endByHp(this.HP);
   }
+  
+  /* eslint-enable */
 
   endByHp(hp) {
     if (hp >= 100) {
@@ -128,15 +126,15 @@ export default class GameScene extends Phaser.Scene {
       CST.state.forageFail = true;
     }
   }
-
+  /* eslint-disable */
   hitObstacle(player, ...obstacles) {
     this.cameras.main.shake(100);
     this.hitText.setVisible(true);
     this.hitText.setText('Obstacle there, find your way');
-    
+
     setTimeout(() => this.hitText.setVisible(false), 2000);
-    
   }
+  /* eslint-enable */
 
   update() {
     if (this.seconds > 0) {

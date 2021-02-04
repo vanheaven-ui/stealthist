@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-
   constructor(scene, x, y, texture, frame) {
     super(scene, x, y, texture, frame);
 
@@ -18,8 +17,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.cursors.left.isDown) {
       this.setVelocityX(-160);
       this.anims.play('left', true);
-    }
-    else if (this.cursors.right.isDown) {
+    } else if (this.cursors.right.isDown) {
       this.setVelocityX(160);
       this.anims.play('right', true);
     }
@@ -27,8 +25,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.cursors.up.isDown) {
       this.setVelocityY(-160);
       this.anims.play('up', true);
-    }
-    else if (this.cursors.down.isDown) {
+    } else if (this.cursors.down.isDown) {
       this.setVelocityY(160);
       this.anims.play('down', true);
     }

@@ -8,7 +8,6 @@ export default class GameOver extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GAMEOVER);
     this.playerTime = JSON.parse(localStorage.getItem('time'));
-    this.score;
   }
 
   create() {
@@ -23,7 +22,7 @@ export default class GameOver extends Phaser.Scene {
     const restartBtn = this.add.image((CST.dimens(this).width / 2) * 1.50, 500, 'restart');
     restartBtn.setInteractive();
 
-    restartBtn.on('pointerdown', () => location.reload());
+    restartBtn.on('pointerdown', () => Window.game.location.reload());
 
     this.timeObj = APIHandler.modifyTime(this.playerTime.min, this.playerTime.sec);
     this.timeMins = this.timeObj.min;
@@ -32,10 +31,10 @@ export default class GameOver extends Phaser.Scene {
     this.score = this.add.text(
       350,
       300,
-      `${this.timer.printTime(this.timeMins,this.timeSecs)}`,
+      `${this.timer.printTime(this.timeMins, this.timeSecs)}`,
       {
-        fontSize: '32px'
-      }
+        fontSize: '32px',
+      },
     );
 
     this.loadBestScoreBtn = this.add.image(200, 400, 'best-score');

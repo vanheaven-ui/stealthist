@@ -7,31 +7,23 @@ body {
 body {
   background: #1e130c;
   background: linear-gradient(to right, #9a8478, #1e130c);
-  background: -webkit-linear-gradient(to right, #9a8478, #1e130c);
 }
 
 canvas {
-  -webkit-box-shadow:
-    0px 0px 0px 8px #000000,
-    0px 0px 0px 16px #4B4C4B,
-    0px 0px 0px 24px #828482,
-    0px 0px 0px 31px #B2B5B2,
-    0px 0px 0px 39px #DADDDA,
-    5px 5px 15px 5px #00000000; 
   box-shadow:
-    0px 0px 0px 8px #000000,
-    0px 0px 0px 16px #4B4C4B,
-    0px 0px 0px 24px #828482,
-    0px 0px 0px 31px #B2B5B2,
-    0px 0px 0px 39px #DADDDA,
-    5px 5px 15px 5px #00000000;
-  background: #000000;
+    0 0 0 8px #000,
+    0 0 0 16px #4b4c4b,
+    0 0 0 24px #828482,
+    0 0 0 31px #b2b5b2,
+    0 0 0 39px #daddda,
+    5px 5px 15px 5px #0000;
+  background: #000;
   margin-left: 270px;
-  margin-top: 50px
+  margin-top: 50px;
 }
 
 body div {
-  margin-left:  270px;
+  margin-left: 270px;
   margin-top: 50px;
 }
 

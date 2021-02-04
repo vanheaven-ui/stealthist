@@ -17,7 +17,7 @@ export default class TitleScene extends Phaser.Scene {
     [this.optionsBtn, this.playBtn, this.creditsBtn, this.quitBtn].forEach((btn) => {
       btn.setInteractive();
     });
-    
+
     this.playBtn.on('pointerdown', () => {
       this.scene.start(CST.scenes.GUIDE1);
     });
@@ -31,11 +31,7 @@ export default class TitleScene extends Phaser.Scene {
     });
 
     this.quitBtn.on('pointerdown', () => {
-      close();
+      close(); // eslint-disable
     });
-
-    // this.input.on('pointerdown', () => {
-    //   this.scene.start(CST.scenes.LEADER);
-    // })
   }
 }

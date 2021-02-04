@@ -1,4 +1,3 @@
-import { TestScheduler } from 'jest';
 import APIHandler from '../src/utils/apiHandler';
 
 test('Module  APIhandler is an Object', () => {
@@ -7,11 +6,11 @@ test('Module  APIhandler is an Object', () => {
 
 test('APIHandler async functions resolve correctly', () => {
   const URL = '';
-  const gameData = { 
-    'user': 'Ezekiel',
-    "score": {
+  const gameData = {
+    user: 'Ezekiel',
+    score: {
       min: '2',
-      sec: '30'
+      sec: '30',
     },
   };
 
@@ -45,4 +44,3 @@ test('modifyTime function converts wrong time format', () => {
 test('modifyTime function doesn\'t convert correct time format', () => {
   expect(APIHandler.modifyTime('4', '59')).toEqual({ min: '4', sec: '59' });
 });
-

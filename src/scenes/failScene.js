@@ -18,17 +18,16 @@ export default class FailScene extends Phaser.Scene {
     if (CST.state.forageFail) {
       this.cameras.main.shake(100);
       this.add.image(250, 300, 'timeout').setAngle(-15);
-    }
-    else {
+    } else {
       this.cameras.main.shake(100);
       this.add.image(250, 300, 'close').setAngle(-15);
     }
-    
+
     [restartBtn, this.quitBtn].forEach(btn => btn.setInteractive());
 
-    restartBtn.on('pointerdown', () => location.reload());
+    restartBtn.on('pointerdown', () => location.reload()); // eslint-disable
 
-    this.quitBtn.on('pointerdown', () => close());
+    this.quitBtn.on('pointerdown', () => close()); // eslint-disable
 
     Menu.createMenuBtn(this);
   }

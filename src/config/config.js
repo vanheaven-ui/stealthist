@@ -32,19 +32,19 @@ const config = {
     Leaderboard,
   ],
   audio: {
-    disableWebAudio: true
+    disableWebAudio: true,
   },
   physics: {
     default: 'arcade',
     arcade: {
-      debug: true,
-      gravity: { y: 0 }, 
-    }
+      debug: false,
+      gravity: { y: 0 },
+    },
   },
   pixelArt: true,
   dom: {
     createContainer: true,
   },
-}
+};
 
 export default config;

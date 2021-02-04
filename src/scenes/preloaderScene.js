@@ -15,7 +15,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.loadingBox.fillStyle(0x222222, 0.8);
     this.loadingBox.fillRect(230, 270, 300, 100);
 
-    let loadingText = this.make.text({
+    const loadingText = this.make.text({
       text: 'Loading...',
       x: CST.dimens(this).width / 2,
       y: (CST.dimens(this).height / 2) - 20,
@@ -26,37 +26,37 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     loadingText.setOrigin(0.5, 0.5);
 
-    let percentText = this.make.text({
+    const percentText = this.make.text({
       text: '0%',
       x: CST.dimens(this).width / 2,
       y: (CST.dimens(this).height / 2) + 20,
       style: {
         font: '19px monospace',
         fill: '#ffffff',
-      }      
+      },
     });
     percentText.setOrigin(0.5, 0.5);
 
-    let assetText = this.make.text({
+    const assetText = this.make.text({
       text: '',
       x: CST.dimens(this).width / 2,
       y: (CST.dimens(this).height / 2) * 1.2,
       style: {
         font: '20px monospace',
         fill: '#ffffff',
-      }
+      },
     });
     assetText.setOrigin(0.5, 0.5);
 
     this.load.on('progress', percent => {
       this.loadingBar.fillStyle('#ffffff66', 1);
       this.loadingBar.fillRect(250, 300, 300 * percent, 30);
-      percentText.setText(parseInt(percent * 100, 10) + '%');
+      percentText.setText(`${parseInt(percent * 100, 10)}%`);
       this.loadingBox.fillStyle('#2121211a', 0.8);
     });
 
     this.load.on('fileprogress', file => {
-      assetText.setText('Loading Asset: ' + file.key);
+      assetText.setText(`Loading Asset: ${file.key}`);
     });
 
     this.load.on('complete', () => {
@@ -64,11 +64,11 @@ export default class PreloaderScene extends Phaser.Scene {
       this.loadingBox.destroy();
       [loadingText, assetText, percentText].forEach(text => {
         text.destroy();
-      })
+      });
     });
   }
 
-  create () {
+  create() {
     this.scene.start(CST.scenes.TITLE);
   }
 }

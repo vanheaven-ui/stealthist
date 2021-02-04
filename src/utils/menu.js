@@ -7,13 +7,11 @@ export default class Menu {
       CST.dimens(scene).height * 0.9,
       'menu',
     );
-    
+
     scene.menuBtn.setInteractive();
-    
+
     scene.menuBtn.on('pointerdown', () => {
       scene.scene.start(CST.scenes.TITLE);
     });
   }
-  
 }
-
