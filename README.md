@@ -1,6 +1,6 @@
 <div align="center">
 
-  ![Logo](dist/assets/images/logo1.png)
+  # STEALTHIST
 
 
 An HTML5 Role Play Game(RPG) built using Phaser game engine and JavaScript.
