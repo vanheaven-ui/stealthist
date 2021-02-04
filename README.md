@@ -1,6 +1,6 @@
 <div align="center">
 
-  ![Logo](dist/images/logo1.png)
+  ![Logo](dist/assets/images/logo1.png)
 
 
 An HTML5 Role Play Game(RPG) built using Phaser game engine and JavaScript.
@@ -13,7 +13,7 @@ An HTML5 Role Play Game(RPG) built using Phaser game engine and JavaScript.
 
 ## Application Screenshot
 
-![Screenshot]()
+![Screenshot](screenshot/screenshot.gif)
 
 ## Content
 
@@ -65,7 +65,7 @@ As per project specifications, the game implemented the following scenes in the 
 9. GameoverScene - This scene was determined to provide the ending of a player's complete play cycle. Upon the player falling in a trap in `GameScene2` described above, this scene would be loaded. Likewise, upon getting to the treasure chest in `GameScene2`, described above, this scene would be loaded. These scene was designed to provide options to the player which include; get the leaderboard, restart the game, get the menu.
 10. LeaderboardScene - This scene was deteremined to  display the best player game scores. This use use time scores for ranking. The time score is the time it takes to succeed in the game.
 
-### Game Design Implementaion
+#### Game Design Implementaion
 Most of the design concepts were implemented in this respository. However, some design concepts are still pending and these include:
 - Using a different game character for the second scene to show better health.
 - character being able to pich animated coins in the second play scene of the game.
@@ -113,8 +113,8 @@ If you don't meet the above prerequisites, then:
 
 ### Testing <a name = "tests"></a>
 Jest was used to test the code contained herein.
-To run the test written in this project, then:
-- Type/copy `jest` in the terminal and strike `Enter`.
+To run the tests written in this project, then:
+- Type/copy `npm run test` into the terminal and strike `Enter`.
 
 ###  App <a name = "app"></a>
 With the installations above complete, you are set to use the code and locally run the HTML 5 RPG built in this repository. Follow these simple steps:
