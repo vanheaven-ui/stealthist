@@ -25,9 +25,13 @@ export default class FailScene extends Phaser.Scene {
 
     [restartBtn, this.quitBtn].forEach(btn => btn.setInteractive());
 
-    restartBtn.on('pointerdown', () => location.reload()); // eslint-disable
+    /* eslint-disable */
 
-    this.quitBtn.on('pointerdown', () => close()); // eslint-disable
+    restartBtn.on('pointerdown', () => location.reload());
+
+    this.quitBtn.on('pointerdown', () => close());
+
+    /* eslint-enable */
 
     Menu.createMenuBtn(this);
   }

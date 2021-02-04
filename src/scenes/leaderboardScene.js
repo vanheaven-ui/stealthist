@@ -27,9 +27,13 @@ export default class Leaderboard extends Phaser.Scene {
 
     this.playAgainBtn.setAngle(15);
 
+    /* eslint-disable */
+
     this.playAgainBtn.on('pointerdown', () => {
-      location.reload(); // eslint-disable
+      location.reload();
     });
+
+    /* eslint-enable */
 
     this.menuBtn.on('pointerdown', () => {
       this.scene.start(CST.scenes.TITLE);

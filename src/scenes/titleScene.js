@@ -30,8 +30,13 @@ export default class TitleScene extends Phaser.Scene {
       this.scene.start(CST.scenes.CREDITS);
     });
 
+    /* eslint-disable */
+
     this.quitBtn.on('pointerdown', () => {
-      close(); // eslint-disable
+      close(); 
     });
+
+    // eslint-enable */
+
   }
 }
