@@ -42,7 +42,7 @@ export default class StealthScene extends Phaser.Scene {
 
     layers.forEach(layer => layer.setCollisionByProperty({ collides: true }));
 
-    this.physics.add.collider(this.player, layer1, () => this.hittext.setText('true'), null, this);
+    this.physics.add.collider(this.player, layer1, () => this.hittext.setText('Wall'), null, this);
     this.physics.add.collider(this.player, layer2, this.trapFall, null, this);
     this.physics.add.collider(this.player, layer3, this.healthDent, null, this);
     this.physics.add.collider(this.player, layer4, this.endByTreasure, null, this);
@@ -70,6 +70,7 @@ export default class StealthScene extends Phaser.Scene {
   }
 
   healthDent(player, obstacle) {
+    this.cameras.main.shake(200);
     this.hittext.setVisible(true);
     this.deadText.setVisible(true);
     this.hittext.setText('health -5');

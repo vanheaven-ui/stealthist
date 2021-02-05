@@ -1,4 +1,5 @@
-const APIHandler = (() => {
+const APIHandler = (() => { 
+  let baseEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/CdISo1zrmscAtAtqHEmn/scores';
   const postData = async (url, dataObj) => {
     const response = await fetch(url, {
       mode: 'cors',
@@ -27,7 +28,7 @@ const APIHandler = (() => {
     return { min: minInt.toString(), sec: secInt.toString() };
   };
 
-  return { postData, getData, modifyTime };
+  return { postData, getData, modifyTime, baseEndPoint };
 })();
 
 export default APIHandler;

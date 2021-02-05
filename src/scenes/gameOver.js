@@ -22,7 +22,9 @@ export default class GameOver extends Phaser.Scene {
     const restartBtn = this.add.image((CST.dimens(this).width / 2) * 1.50, 500, 'restart');
     restartBtn.setInteractive();
 
+    /* eslint-disable */
     restartBtn.on('pointerdown', () => location.reload());
+    /* eslint-enable */
 
     this.timeObj = APIHandler.modifyTime(this.playerTime.min, this.playerTime.sec);
     this.timeMins = this.timeObj.min;

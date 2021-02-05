@@ -6,7 +6,6 @@ import { CST, sortArrayByScore } from '../utils/utils';
 export default class Leaderboard extends Phaser.Scene {
   constructor() {
     super(CST.scenes.LEADER);
-    this.baseEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/CdISo1zrmscAtAtqHEmn/scores';
     this.gameData = { user: '', score: '' };
     this.space = 0;
   }
@@ -42,7 +41,23 @@ export default class Leaderboard extends Phaser.Scene {
     this.gameData.user = JSON.parse(localStorage.getItem('player'));
     this.gameData.score = JSON.parse(localStorage.getItem('time'));
 
-    APIHandler.postData(this.baseEndPoint, this.gameData)
+    APIHandler.getData(APIHandler.baseEndPoint)
+    .then(data => {
+      sortArrayByScore(data.result).forEach((userObj, index) => {
+        this.add.text(
+          280,
+          170 + this.space,
+          `${index + 1}. ${userObj.user} | ${this.timer.printTime(userObj.score.min, userObj.score.sec)}`,
+          {
+            font: '19px monospace',
+            fill: '#0000ff',
+          },
+        );
+        this.space += 30;
+      });
+    });
+
+    APIHandler.postData(APIHandler.baseEndPoint, this.gameData)
       .then(data => {
         this.successText = this.add.text(
           180,
@@ -57,22 +72,6 @@ export default class Leaderboard extends Phaser.Scene {
         setTimeout(() => {
           this.successText.setVisible(false);
         }, 1000);
-      });
-
-    APIHandler.getData(this.baseEndPoint)
-      .then(data => {
-        sortArrayByScore(data.result).forEach((userObj, index) => {
-          this.add.text(
-            280,
-            170 + this.space,
-            `${index + 1}. ${userObj.user} | ${this.timer.printTime(userObj.score.min, userObj.score.sec)}`,
-            {
-              font: '19px monospace',
-              fill: '#0000ff',
-            },
-          );
-          this.space += 30;
-        });
       });
   }
 

@@ -47,8 +47,6 @@ export default class GuideTwo extends Phaser.Scene {
       this.guideText,
     );
 
-    // guide.setAngle(-15);
-
     this.tweens.add({
       targets: title,
       y: -50,
