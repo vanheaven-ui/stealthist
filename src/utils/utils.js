@@ -45,17 +45,12 @@ const CST = {
   },
 };
 
-const sortArrayByScore = (array) => {
-  array.sort((a, b) => {
-    if (a.score.min == b.score.sec) {
-      return a.score.sec - b.score.sec;
-    }
-    else if (a.score.min != b.score.min) {
-      return a.score.min - b.score.min;
-    }
-  });
+const sortArrayBySec = (array) => array.sort((a, b) => a.score.sec - b.score.sec);
 
-  return array;
+const sortArrayByScore = (array) => {
+  const sortedArray = array.sort((a, b) => a.score.min - b.score.min);
+  sortArrayBySec(sortedArray);
+  return sortedArray;
 };
 
 export { CST, sortArrayByScore };

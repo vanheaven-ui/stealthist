@@ -1,5 +1,5 @@
 const APIHandler = (() => {
-  const baseEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/0KAQ5jRCT0XRGufdzqQn/scores';
+  const baseEndPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/y51jDMzdzcuW1tIiJTYY/scores';
   const postData = async (url, dataObj) => {
     const response = await fetch(url, {
       mode: 'cors',

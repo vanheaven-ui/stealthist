@@ -41,7 +41,7 @@ export default class Leaderboard extends Phaser.Scene {
       .then(data => {
         sortArrayByScore(data.result).forEach((userObj, index) => {
           this.add.text(
-            280,
+            290,
             170 + this.space,
             `${index + 1}. ${userObj.user} | ${this.timer.printTime(userObj.score.min, userObj.score.sec)}`,
             {
@@ -52,6 +52,7 @@ export default class Leaderboard extends Phaser.Scene {
           this.space += 30;
         });
       });
+    this.space = 0;
   }
 
   successMsg() {

@@ -38,14 +38,8 @@ export default class TitleScene extends Phaser.Scene {
       this.scene.start(CST.scenes.LEADER);
     });
 
-    /* eslint-disable */
-
     this.quitBtn.on('pointerdown', () => {
-      const customWindow = window.open('', '_blank', '');
-      customWindow.close(); 
+      this.add.text((CST.dimens(this).width / 2) + 100, 520, 'Close the tab', { fontSize: '18px' });
     });
-
-    // eslint-enable */
-
   }
 }

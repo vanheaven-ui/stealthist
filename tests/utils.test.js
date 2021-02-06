@@ -5,25 +5,21 @@ test('sortArrayByScore function is defined', () => {
   expect(sortArrayByScore(arr)).toBeDefined();
 });
 
-test('sortingArrayByScore should receive array as aurgument', () => {
-
-});
-
-test('sortArrayByScore function returns a decending order sorted array', () => {
+test('sortArrayByScore function returns an ascecending order sorted array', () => {
   const array = [
     { user: '', score: { min: '6', sec: '31' } },
-    { user: '', score: { min: '2', sec: '31' } },
+    { user: '', score: { min: '6', sec: '35' } },
     { user: '', score: { min: '1', sec: '31' } },
     { user: '', score: { min: '0', sec: '31' } },
     { user: '', score: { min: '5', sec: '31' } },
   ];
 
   const expected = [
-    { user: '', score: { min: '6', sec: '31' } },
-    { user: '', score: { min: '5', sec: '31' } },
-    { user: '', score: { min: '2', sec: '31' } },
-    { user: '', score: { min: '1', sec: '31' } },
     { user: '', score: { min: '0', sec: '31' } },
+    { user: '', score: { min: '1', sec: '31' } },
+    { user: '', score: { min: '5', sec: '31' } },
+    { user: '', score: { min: '6', sec: '31' } },
+    { user: '', score: { min: '6', sec: '35' } },
   ];
   expect(sortArrayByScore(array)).toEqual(expected);
 });

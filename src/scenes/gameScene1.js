@@ -2,13 +2,11 @@ import Phaser from 'phaser';
 import { CST } from '../utils/utils';
 import Player from '../characters/player';
 import Timer from '../utils/timer';
-import APIHandler from '../utils/apiHandler';
 
 export default class StealthScene extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GAME1);
     this.HP = JSON.parse(localStorage.getItem('healthPoints'));
-    this.username = JSON.parse(localStorage.getItem('player'));
     this.min = 0;
     this.sec = 0;
     this.trapEnd = false;
@@ -18,6 +16,7 @@ export default class StealthScene extends Phaser.Scene {
   }
 
   create() {
+    this.username = JSON.parse(localStorage.getItem('player'));
     this.player = new Player(this, 20, 20, 'dude1', 'down').setDepth(1);
 
     this.player.cursors = this.input.keyboard.createCursorKeys();
@@ -104,10 +103,9 @@ export default class StealthScene extends Phaser.Scene {
 
   update() {
     this.player.movePlayer();
-    
-    this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
 
-    this.sec += 1
+    this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
+    this.sec += 1;
     if (this.sec === 59) {
       this.sec = 0;
       this.min += 1;
@@ -115,47 +113,8 @@ export default class StealthScene extends Phaser.Scene {
     }
 
     if (this.pass) {
-      console.log(this.min, this.sec);
-      this.endText = `${this.min} : ${this.sec}`;
       localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}` }));
     }
-    
-    
-        // APIHandler.postData(APIHandler.baseEndPoint, this.gameData)
-        // .then(data => {
-        //   this.successText = this.add.text(
-        //     180,
-        //     20,
-        //     `${data.result}`,
-        //     {
-        //       fontSize: '22px',
-        //       fill: '#00ff00',
-        //     },
-        //   );
-        //   this.successText.setVisible(true);
-        //   setTimeout(() => {
-        //     this.successText.setVisible(false);
-        //   }, 1000);
-        // });
-        // break;
-    this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
-    
-
-    // for (this.sec; this.sec < 60; this.sec += 1) {
-    //   
-    // }
-    
-    
-      // this.overSound.play();
-      // localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}` }));
-      
-      // this.gameData.user = JSON.parse(localStorage.getItem('player'));
-      //  let utlimateScore = { min: `${this.min}`, sec: `${this.sec}` };
-      //  break;
-      //  console.log(utlimateScore);
-      //  this.gameData.score = utlimateScore;
-      
-      // 
   }
 
   static trackFailState() {
