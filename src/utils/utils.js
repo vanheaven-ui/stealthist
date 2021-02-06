@@ -46,7 +46,15 @@ const CST = {
 };
 
 const sortArrayByScore = (array) => {
-  array.sort((a, b) => b.score.min - a.score.min);
+  array.sort((a, b) => {
+    if (a.score.min == b.score.sec) {
+      return a.score.sec - b.score.sec;
+    }
+    else if (a.score.min != b.score.min) {
+      return a.score.min - b.score.min;
+    }
+  });
+
   return array;
 };
 

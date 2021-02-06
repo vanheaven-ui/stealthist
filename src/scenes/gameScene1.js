@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { CST } from '../utils/utils';
 import Player from '../characters/player';
 import Timer from '../utils/timer';
+import APIHandler from '../utils/apiHandler';
 
 export default class StealthScene extends Phaser.Scene {
   constructor() {
@@ -13,6 +14,7 @@ export default class StealthScene extends Phaser.Scene {
     this.trapEnd = false;
     this.fail = false;
     this.pass = false;
+    this.gameData = { user: '', score: '' };
   }
 
   create() {
@@ -87,8 +89,8 @@ export default class StealthScene extends Phaser.Scene {
   }
 
   endByTreasure(player, treasure) {
-    this.pass = true;
     this.physics.pause();
+    this.pass = true;
     this.winText.setVisible(true);
     this.winText.setText('💪Yay! You made it');
 
@@ -102,19 +104,58 @@ export default class StealthScene extends Phaser.Scene {
 
   update() {
     this.player.movePlayer();
-
+    
     this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
-    this.sec += 1;
-    if (!this.pass) {
-      if (this.sec === 59) {
-        this.sec = 0;
-        this.min += 1;
-        this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
-      }
-    } else {
-      this.overSound.play();
+
+    this.sec += 1
+    if (this.sec === 59) {
+      this.sec = 0;
+      this.min += 1;
+      this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
+    }
+
+    if (this.pass) {
+      console.log(this.min, this.sec);
+      this.endText = `${this.min} : ${this.sec}`;
       localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}` }));
     }
+    
+    
+        // APIHandler.postData(APIHandler.baseEndPoint, this.gameData)
+        // .then(data => {
+        //   this.successText = this.add.text(
+        //     180,
+        //     20,
+        //     `${data.result}`,
+        //     {
+        //       fontSize: '22px',
+        //       fill: '#00ff00',
+        //     },
+        //   );
+        //   this.successText.setVisible(true);
+        //   setTimeout(() => {
+        //     this.successText.setVisible(false);
+        //   }, 1000);
+        // });
+        // break;
+    this.timeText.setText(`Time: ${this.timer.printTime(this.min, this.sec)}`);
+    
+
+    // for (this.sec; this.sec < 60; this.sec += 1) {
+    //   
+    // }
+    
+    
+      // this.overSound.play();
+      // localStorage.setItem('time', JSON.stringify({ min: `${this.min}`, sec: `${this.sec}` }));
+      
+      // this.gameData.user = JSON.parse(localStorage.getItem('player'));
+      //  let utlimateScore = { min: `${this.min}`, sec: `${this.sec}` };
+      //  break;
+      //  console.log(utlimateScore);
+      //  this.gameData.score = utlimateScore;
+      
+      // 
   }
 
   static trackFailState() {

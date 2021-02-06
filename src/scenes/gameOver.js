@@ -7,10 +7,19 @@ import Timer from '../utils/timer';
 export default class GameOver extends Phaser.Scene {
   constructor() {
     super(CST.scenes.GAMEOVER);
-    this.playerTime = JSON.parse(localStorage.getItem('time'));
   }
 
   create() {
+    this.playerTime = JSON.parse(localStorage.getItem('time'));
+    this.timeMin = this.playerTime.min;
+    this.timeSec = this.playerTime.sec;
+    console.log(this.timeMin, this.timeSec);
+    this.username = JSON.parse(localStorage.getItem('player'));
+    this.userObj = { user: this.username, score: APIHandler.modifyTime(this.timeMin, this.timeSec) };
+    console.log(this.userObj);
+    APIHandler.postData(APIHandler.baseEndPoint, this.userObj)
+    .then(data => console.log(data));
+
     this.add.image(CST.dimens(this).width / 2, 100, 'gameoverTitle');
     this.add.image(CST.dimens(this).width / 2, 180, 'welldone');
     this.add.image(CST.dimens(this).width / 2, 250, 'yourtime');

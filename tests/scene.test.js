@@ -12,7 +12,7 @@ import PreloaderScene from '../src/scenes/preloaderScene';
 import TitleScene from '../src/scenes/titleScene';
 import 'jest-canvas-mock';
 
-let scenes = [
+const scenes = [
   BootScene,
   CreditsScene,
   FailScene,
@@ -27,9 +27,10 @@ let scenes = [
   TitleScene,
 ];
 
-scenes.forEach(scene => {
+scenes.forEach(Scene => {
   test('Scenes are defined', () => {
-    new scene();
-    expect(scene).toBeDefined();
+    const inst = new Scene();
+    expect(Scene).toBeDefined();
+    expect(inst).toBeInstanceOf(Scene);
   });
 });
