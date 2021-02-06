@@ -122,7 +122,9 @@ export default class GameScene extends Phaser.Scene {
       CST.state.forageFail = true;
     }
   }
- 
+
+  /* eslint-disable */
+
   hitObstacle(player, ...obstacles) {
     this.cameras.main.shake(100);
     this.hitText.setVisible(true);
@@ -130,6 +132,8 @@ export default class GameScene extends Phaser.Scene {
 
     setTimeout(() => this.hitText.setVisible(false), 2000);
   }
+
+  /* eslint-enable */
 
   update() {
     if (this.seconds > 0) {

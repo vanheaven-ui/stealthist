@@ -57,6 +57,7 @@ export default class StealthScene extends Phaser.Scene {
   }
 
   /* eslint-disable */
+  
   trapFall(player, trap) {
     this.trapEnd = true;
     this.trapped.setVisible(true);
