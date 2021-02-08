@@ -8,16 +8,15 @@ export default class GuideTwo extends Phaser.Scene {
     this.titleText = 'STEALTH SCENE INSTRUCTIONS';
     this.guideText = `Welldone on getting your health in order, brace your self for the stealth scene 
                       where there are obstacles that can dent your health. In the stealth scene, 
-                      you will move the character through a bungeon and collect your treasure chest 
+                      you will move the character through a dungeon to collect your treasure chest 
                       girlfiend.
 
                       Disclaimer: You are not out for revenge but rather to evade obstacles and 
                       get your girlfriend. /* Don’t expect any bloodshed */.
                       
-                      You have to move the player through the dungeon while avoiding obstacles that 
-                      can reduce your health
-                      to death.
-                      You should look out for trap disguised as go-down ladder that will end the game 
+                      You have to move the character through the dungeon while avoiding obstacles that 
+                      can reduce your health to death.
+                      You should look out for traps disguised as go-down ladders that will end the game 
                       when collided with. 
 
                       To move the player, use the keyboard arrows accordingly as below.

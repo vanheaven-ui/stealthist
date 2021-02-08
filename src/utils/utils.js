@@ -49,8 +49,9 @@ const sortArrayBySec = (array) => array.sort((a, b) => a.score.sec - b.score.sec
 
 const sortArrayByScore = (array) => {
   const sortedArray = array.sort((a, b) => a.score.min - b.score.min);
-  sortArrayBySec(sortedArray);
-  return sortedArray;
+  const sortBySecArr = sortArrayBySec(sortedArray);
+  sortBySecArr.sort((a, b) => a.score.min - b.score.min);
+  return sortBySecArr;
 };
 
 export { CST, sortArrayByScore };
